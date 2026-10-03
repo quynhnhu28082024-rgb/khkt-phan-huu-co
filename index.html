@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8">
+  <meta name="kombai-design-canvas" content="true">
+  
+  
+  
+  <script src="https://unpkg.com/@tailwindcss/browser@4.3.3/dist/index.global.js" integrity="sha384-2ql948lIdLcGEE0/qxNiudyTjgauA3RDJERu5xW75kFCvSl5a9odyQYCb6tEjnmB" crossorigin="anonymous"></script>
+  
+  <style>html, body { margin: 0; padding: 0; } #root { display: contents; }</style>
+</head><body>
+  <div id="root"><style>
+    @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,500;0,600;1,500&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.48.0/dist/tabler-icons.min.css');
+
+.px-site { font-family: 'Be Vietnam Pro', sans-serif; color: #1f4d3a; background-color: #faf8f4; }
+.px-display { font-family: 'Crimson Pro', Georgia, serif; }
+.px-paper { background-image: linear-gradient(90deg, rgba(114,81,59,.025) 1px, transparent 1px), linear-gradient(rgba(114,81,59,.025) 1px, transparent 1px); background-size: 26px 26px; }
+.px-rule { background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 31px, rgba(47,111,78,.09) 32px); }
+.px-intro-screen { animation: px-intro-exit 3s ease forwards; }
+.px-intro-screen img { animation: px-intro-zoom 3s ease-in-out forwards; }
+@keyframes px-intro-exit { 0%,72% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; pointer-events: none; } }
+@keyframes px-intro-zoom { from { transform: scale(1); } to { transform: scale(1.09); } }
+.px-intro-screen.is-skipped { animation: none; opacity: 0; visibility: hidden; pointer-events: none; }
+.px-product:hover { transform: translateY(-3px) rotate(0deg); }
+.px-product[aria-pressed="true"] { outline: 2px solid #2f6f4e; outline-offset: 2px; }
+.px-product { transition: transform .2s ease, outline-color .2s ease; }
+#lab-form select { border-color: #d2cbbb; background-color: #fffefa; }
+.px-line-input:focus { outline: 2px solid #2f6f4e; outline-offset: 2px; }
+@media (max-width: 767px) { .px-desktop-nav { display: none; } }
+</style>
+<div class="px-site overflow-x-clip" data-kid="1" data-name="site wrapper">
+    <!-- 1. Nature intro: content stays present beneath the short welcome moment. -->
+    <div aria-label="Mở đầu dự án Phân Xanh" class="px-intro-screen fixed inset-0 z-[100] flex min-h-screen items-center justify-center overflow-hidden bg-[#1f4d3a] text-[#faf8f4]" data-dynamic="true" data-kid="1-1" data-name="intro overlay screen" data-reason="opacity and visibility toggled by script" id="px-intro">
+        <img alt="Tán cây xanh nhìn lên dưới ánh sáng tự nhiên" class="absolute inset-0 h-full w-full object-cover opacity-35" data-kid="1-1-1" data-name="background image" decoding="async" loading="lazy" src="https://images.pexels.com/photos/32370187/pexels-photo-32370187.jpeg?auto=compress&cs=tinysrgb&w=1800&q=80"/>
+        <div class="absolute inset-0 bg-[#173c2d]/55" data-kid="1-1-2" data-name="dark overlay">
+        </div>
+        <div class="relative z-10 px-6 text-center" data-kid="1-1-3" data-name="intro content container">
+            <i aria-hidden="true" class="ti ti-seedling mb-5 block text-4xl" data-kid="1-1-3-1" data-name="seedling icon">
+            </i>
+            <p class="px-display text-5xl italic md:text-6xl" data-kid="1-1-3-2" data-name="intro main headline">
+                Từ rác thải hữu cơ…
+            </p>
+            <p class="mx-auto mt-4 max-w-sm text-sm leading-6 text-white/80" data-kid="1-1-3-3" data-name="intro subheadline">
+                Một hành trình nhỏ để trả lại dưỡng chất cho đất.
+            </p>
+        </div>
+        <button class="absolute bottom-7 right-7 z-20 rounded-md border border-white/50 px-4 py-2 text-sm text-white hover:bg-white/10 focus:outline-2 focus:outline-offset-2 focus:outline-white" data-kid="1-1-4" data-name="skip intro button" id="px-skip-intro" type="button">
+            Bỏ qua
+        </button>
+    </div>
+    <!-- 2. Header -->
+    <header class="relative z-20 border-b border-[#dce5d8] bg-[#faf8f4]" data-kid="1-2" data-name="header container">
+        <div class="mx-auto flex max-w-[1240px] items-center justify-between gap-5 px-5 py-4 lg:px-8" data-kid="1-2-1" data-name="header inner flex container">
+            <a aria-label="Phân Xanh, về đầu trang" class="flex shrink-0 items-center gap-2 text-[#1f4d3a]" data-kid="1-2-1-1" data-name="site logo and name link" href="#trang-chu">
+                <span class="flex size-10 items-center justify-center rounded-full border border-[#b7ccb5] bg-[#e0eee2] text-xl" data-kid="1-2-1-1-1" data-name="logo container">
+                    <i aria-hidden="true" class="ti ti-seedling" data-kid="1-2-1-1-1-1" data-name="seedling icon">
+                    </i>
+                </span>
+                <span class="px-display text-2xl font-semibold" data-kid="1-2-1-1-2" data-name="site name text">
+                    Phân Xanh
+                </span>
+            </a>
+            <nav aria-label="Điều hướng chính" class="px-desktop-nav hidden items-center gap-6 text-[13px] font-medium text-[#536356] lg:flex" data-kid="1-2-1-2" data-name="desktop navigation menu">
+                <a class="hover:text-[#2f6f4e]" data-kid="1-2-1-2-1" data-name="nav link" href="#trang-chu">
+                    Trang chủ
+                </a>
+                <a class="hover:text-[#2f6f4e]" data-kid="1-2-1-2-2" data-name="nav link" href="#cau-chuyen">
+                    Câu chuyện
+                </a>
+                <a class="hover:text-[#2f6f4e]" data-kid="1-2-1-2-3" data-name="nav link" href="#san-pham">
+                    Sản phẩm
+                </a>
+                <a class="hover:text-[#2f6f4e]" data-kid="1-2-1-2-4" data-name="nav link" href="#thi-nghiem">
+                    Thí nghiệm ảo
+                </a>
+                <a class="hover:text-[#2f6f4e]" data-kid="1-2-1-2-5" data-name="nav link" href="#danh-gia">
+                    Đánh giá
+                </a>
+                <a class="hover:text-[#2f6f4e]" data-kid="1-2-1-2-6" data-name="nav link" href="#lien-he">
+                    Liên hệ
+                </a>
+            </nav>
+            <a class="hidden items-center gap-2 rounded-md bg-[#2f6f4e] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#1f4d3a] sm:inline-flex" data-kid="1-2-1-3" data-name="send feedback button" href="#danh-gia">
+                Gửi góp ý
+                <i aria-hidden="true" class="ti ti-arrow-up-right" data-kid="1-2-1-3-1" data-name="arrow icon">
+                </i>
+            </a>
+            <details class="relative lg:hidden" data-kid="1-2-1-4" data-name="mobile navigation details">
+                <summary aria-label="Mở menu" class="flex size-10 cursor-pointer list-none items-center justify-center rounded-md border border-[#cbd8c9] text-xl" data-kid="1-2-1-4-1" data-name="mobile menu summary toggle">
+                    <i aria-hidden="true" class="ti ti-menu-2" data-kid="1-2-1-4-1-1" data-name="menu hamburger icon">
+                    </i>
+                </summary>
+                <nav aria-label="Điều hướng trên điện thoại" class="absolute right-0 top-12 z-40 grid min-w-52 gap-1 border border-[#dce5d8] bg-[#faf8f4] p-3 shadow-lg" data-kid="1-2-1-4-2" data-name="mobile navigation menu">
+                    <a class="rounded px-3 py-2 text-sm hover:bg-[#e0eee2]" data-kid="1-2-1-4-2-1" data-name="mobile nav link" href="#trang-chu">
+                        Trang chủ
+                    </a>
+                    <a class="rounded px-3 py-2 text-sm hover:bg-[#e0eee2]" data-kid="1-2-1-4-2-2" data-name="mobile nav link" href="#cau-chuyen">
+                        Câu chuyện
+                    </a>
+                    <a class="rounded px-3 py-2 text-sm hover:bg-[#e0eee2]" data-kid="1-2-1-4-2-3" data-name="mobile nav link" href="#san-pham">
+                        Sản phẩm
+                    </a>
+                    <a class="rounded px-3 py-2 text-sm hover:bg-[#e0eee2]" data-kid="1-2-1-4-2-4" data-name="mobile nav link" href="#thi-nghiem">
+                        Thí nghiệm ảo
+                    </a>
+                    <a class="rounded px-3 py-2 text-sm hover:bg-[#e0eee2]" data-kid="1-2-1-4-2-5" data-name="mobile nav link" href="#danh-gia">
+                        Đánh giá
+                    </a>
+                    <a class="rounded px-3 py-2 text-sm hover:bg-[#e0eee2]" data-kid="1-2-1-4-2-6" data-name="mobile nav link" href="#lien-he">
+                        Liên hệ
+                    </a>
+                </nav>
+            </details>
+        </div>
+    </header>
+    <main data-kid="1-3" data-name="main page content">
+        <!-- 3. Hero -->
+        <section class="bg-[#faf8f4] px-5 pb-16 pt-8 md:pb-24 md:pt-14 lg:px-8" data-kid="1-3-1" data-name="hero section" id="trang-chu">
+            <div class="mx-auto grid max-w-[1240px] items-center gap-10 lg:grid-cols-[.92fr_1.08fr] lg:gap-14" data-kid="1-3-1-1" data-name="hero content grid">
+                <div class="relative z-10 py-5" data-kid="1-3-1-1-1" data-name="hero text content">
+                    <p class="mb-6 inline-flex items-center gap-2 border border-[#cbdac9] bg-white/70 px-3 py-2 text-xs font-semibold text-[#365b43] sm:text-sm" data-kid="1-3-1-1-1-1" data-name="hero project badge">
+                        <i aria-hidden="true" class="ti ti-seedling text-lg" data-kid="1-3-1-1-1-1-1" data-name="seedling icon">
+                        </i>
+                        Dự án Khoa học kỹ thuật – Học sinh THPT
+                    </p>
+                    <h1 class="px-display max-w-[650px] text-[3.5rem] leading-[.98] tracking-[-.025em] text-[#1f4d3a] sm:text-7xl" data-kid="1-3-1-1-1-2" data-name="hero main headline">
+                        Biến
+                        <span class="relative inline-block" data-kid="1-3-1-1-1-2-1" data-name="headline emphasis span">
+                            <span class="absolute inset-x-0 bottom-[.08em] -z-0 h-[.28em] bg-[#cfe1b9]" data-kid="1-3-1-1-1-2-1-1" data-name="underline decoration">
+                            </span>
+                            <span class="relative" data-kid="1-3-1-1-1-2-1-2" data-name="headline emphasis text">
+                                rác hữu cơ
+                            </span>
+                        </span>
+                        thành dưỡng chất cho đất.
+                    </h1>
+                    <p class="mt-6 max-w-xl text-[15px] leading-7 text-[#5b695e] sm:text-base sm:leading-8" data-kid="1-3-1-1-1-3" data-name="hero subtext">
+                        Từ vỏ trái cây, rau củ hỏng và phụ phẩm hữu cơ, nhóm học sinh chúng em nghiên cứu cách ủ phân bón hữu cơ giàu dinh dưỡng, dễ thực hiện và tận dụng tối đa nguồn rác thải bỏ đi.
+                    </p>
+                    <div class="mt-8 flex flex-wrap items-center gap-3" data-kid="1-3-1-1-1-4" data-name="hero action buttons container">
+                        <a class="inline-flex items-center gap-2 rounded-md bg-[#2f6f4e] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1f4d3a]" data-kid="1-3-1-1-1-4-1" data-name="primary cta button" href="#san-pham">
+                            Xem sản phẩm
+                            <i aria-hidden="true" class="ti ti-arrow-down-right" data-kid="1-3-1-1-1-4-1-1" data-name="arrow icon">
+                            </i>
+                        </a>
+                        <a class="inline-flex items-center gap-2 rounded-md border border-[#72513b]/50 px-5 py-3 text-sm font-semibold text-[#72513b] hover:bg-[#f0ece4]" data-kid="1-3-1-1-1-4-2" data-name="secondary cta button" href="#thi-nghiem">
+                            Thử thí nghiệm ảo
+                        </a>
+                    </div>
+                    <div class="mt-9 flex items-center gap-3 border-t border-[#e2dfd5] pt-5 text-sm text-[#647166]" data-kid="1-3-1-1-1-5" data-name="hero info footer">
+                        <span class="flex size-8 items-center justify-center rounded-full bg-[#e0eee2] text-[#2f6f4e]" data-kid="1-3-1-1-1-5-1" data-name="info icon container">
+                            <i aria-hidden="true" class="ti ti-recycle" data-kid="1-3-1-1-1-5-1-1" data-name="recycle icon">
+                            </i>
+                        </span>
+                        <span data-kid="1-3-1-1-1-5-2" data-name="info text">
+                            Tận dụng phụ phẩm, nuôi dưỡng vòng tuần hoàn xanh.
+                        </span>
+                    </div>
+                </div>
+                <div class="relative mx-auto w-full max-w-[610px] lg:ml-auto" data-kid="1-3-1-1-2" data-name="hero image container">
+                    <div class="absolute -left-4 top-8 z-10 max-w-52 -rotate-2 border border-[#e2dfd5] bg-[#fffefa] px-4 py-3 shadow-sm sm:-left-8" data-kid="1-3-1-1-2-1" data-name="floating note box">
+                        <p class="px-display text-xl italic text-[#72513b]" data-kid="1-3-1-1-2-1-1" data-name="floating note text">
+                            “Rác” cũng có thể nuôi dưỡng sự sống.
+                        </p>
+                    </div>
+                    <div class="overflow-hidden rounded-t-[48%] rounded-b-md border-[10px] border-[#f3f0e7] bg-[#e7eadf] shadow-sm" data-kid="1-3-1-1-2-2" data-name="image frame container">
+                        <img alt="Đôi tay nâng lớp phân ủ màu sẫm cùng mầm cây xanh non" class="h-[360px] w-full object-cover object-center sm:h-[470px]" data-kid="1-3-1-1-2-2-1" data-name="hero main image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1668688090119-fc853029cb9f?auto=format&w=1200&q=80&fit=crop"/>
+                    </div>
+                    <div aria-hidden="true" class="absolute bottom-0 right-4 flex size-[76px] items-center justify-center rounded-full border-[8px] border-[#faf8f4] bg-[#e0eee2] text-3xl text-[#2f6f4e]" data-kid="1-3-1-1-2-3" data-name="plant decorative badge">
+                        <i class="ti ti-plant-2" data-kid="1-3-1-1-2-3-1" data-name="plant icon">
+                        </i>
+                    </div>
+                    <p class="mt-3 pr-20 text-right text-xs text-[#7a8279]" data-kid="1-3-1-1-2-4" data-name="image caption">
+                        Từ vật liệu hữu cơ đến mầm sống mới
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- 4. Story & ordered research process -->
+        <section class="px-paper bg-[#e7f0e5] px-5 py-16 md:py-24 lg:px-8" data-kid="1-3-2" data-name="story section" id="cau-chuyen">
+            <div class="mx-auto max-w-[1150px]" data-kid="1-3-2-1" data-name="story content container">
+                <div class="grid items-start gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-16" data-kid="1-3-2-1-1" data-name="story layout grid">
+                    <div data-kid="1-3-2-1-1-1" data-name="story text content">
+                        <h2 class="px-display max-w-lg text-5xl leading-[1.03] sm:text-6xl" data-kid="1-3-2-1-1-1-1" data-name="story headline">
+                            Một câu hỏi bắt đầu từ sân trường.
+                        </h2>
+                        <p class="mt-5 max-w-md text-[15px] leading-7 text-[#526557]" data-kid="1-3-2-1-1-1-2" data-name="story description text">
+                            Chúng em thường thấy rau quả hỏng và phụ phẩm hữu cơ bị bỏ đi. Từ đó, nhóm muốn thử một cách tận dụng chúng, tự theo dõi quá trình ủ và tìm hiểu xem nguồn vật liệu quen thuộc ấy có thể tận dụng như thế nào.
+                        </p>
+                        <div class="mt-7 flex items-start gap-3 border-l-2 border-[#8ca88a] pl-4 text-sm leading-6 text-[#526557]" data-kid="1-3-2-1-1-1-3" data-name="learning process highlight">
+                            <i aria-hidden="true" class="ti ti-notebook text-lg text-[#72513b]" data-kid="1-3-2-1-1-1-3-1" data-name="notebook icon">
+                            </i>
+                            <p data-kid="1-3-2-1-1-1-3-2" data-name="highlight text">
+                                Đây là hành trình học hỏi của học sinh: đặt câu hỏi, thử nghiệm, quan sát và điều chỉnh.
+                            </p>
+                        </div>
+                        <div class="mt-8 border border-[#d7ddd2] bg-[#fffefa] p-3 shadow-sm" data-kid="1-3-2-1-1-1-4" data-name="video placeholder container">
+                            <div class="flex min-h-[220px] items-center justify-center bg-[#d7e2d4] px-4 py-6 text-center sm:min-h-[245px]" data-kid="1-3-2-1-1-1-4-1" data-name="video content area">
+                                <p class="px-display max-w-md text-2xl italic leading-snug text-[#49604d] sm:text-[1.7rem]" data-kid="1-3-2-1-1-1-4-1-1" data-name="video placeholder text">
+                                    Video tóm tắt hành trình nghiên cứu sẽ được bổ sung sau
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-y border-[#b8cbb8] bg-white/20 px-2 py-1 sm:px-5" data-kid="1-3-2-1-1-2" data-name="process steps container">
+                        <article class="flex gap-5 border-b border-[#bccfbb] py-7 sm:gap-7 sm:py-8" data-kid="1-3-2-1-1-2-1" data-name="process step article">
+                            <span class="px-display shrink-0 text-[2.7rem] leading-none text-[#72513b]/65 sm:text-[3.1rem]" data-kid="1-3-2-1-1-2-1-1" data-name="step number">
+                                01
+                            </span>
+                            <div data-kid="1-3-2-1-1-2-1-2" data-name="step body">
+                                <h3 class="px-display text-2xl font-semibold sm:text-[1.7rem]" data-kid="1-3-2-1-1-2-1-2-1" data-name="step title">
+                                    Thu gom rác hữu cơ
+                                </h3>
+                                <p class="mt-2 max-w-xl text-sm leading-6 text-[#59695d]" data-kid="1-3-2-1-1-2-1-2-2" data-name="step description">
+                                    Tập hợp vỏ trái cây, rau củ hỏng và phụ phẩm hữu cơ phù hợp làm nguyên liệu.
+                                </p>
+                            </div>
+                        </article>
+                        <article class="flex gap-5 border-b border-[#bccfbb] py-7 sm:gap-7 sm:py-8" data-kid="1-3-2-1-1-2-2" data-name="process step article">
+                            <span class="px-display shrink-0 text-[2.7rem] leading-none text-[#72513b]/65 sm:text-[3.1rem]" data-kid="1-3-2-1-1-2-2-1" data-name="step number">
+                                02
+                            </span>
+                            <div data-kid="1-3-2-1-1-2-2-2" data-name="step body">
+                                <h3 class="px-display text-2xl font-semibold sm:text-[1.7rem]" data-kid="1-3-2-1-1-2-2-2-1" data-name="step title">
+                                    Ủ và tăng protein nhờ dòi
+                                </h3>
+                                <p class="mt-2 max-w-xl text-sm leading-6 text-[#59695d]" data-kid="1-3-2-1-1-2-2-2-2" data-name="step description">
+                                    Ủ nguyên liệu, kết hợp dòi để góp phần tăng hàm lượng protein trong quá trình xử lý.
+                                </p>
+                            </div>
+                        </article>
+                        <article class="flex gap-5 border-b border-[#bccfbb] py-7 sm:gap-7 sm:py-8" data-kid="1-3-2-1-1-2-3" data-name="process step article">
+                            <span class="px-display shrink-0 text-[2.7rem] leading-none text-[#72513b]/65 sm:text-[3.1rem]" data-kid="1-3-2-1-1-2-3-1" data-name="step number">
+                                03
+                            </span>
+                            <div data-kid="1-3-2-1-1-2-3-2" data-name="step body">
+                                <h3 class="px-display text-2xl font-semibold sm:text-[1.7rem]" data-kid="1-3-2-1-1-2-3-2-1" data-name="step title">
+                                    Bổ sung hệ vi sinh vật có lợi
+                                </h3>
+                                <p class="mt-2 max-w-xl text-sm leading-6 text-[#59695d]" data-kid="1-3-2-1-1-2-3-2-2" data-name="step description">
+                                    Phối trộn với phân hữu cơ có chứa vi sinh vật có lợi để tiếp tục hoàn thiện hỗn hợp.
+                                </p>
+                            </div>
+                        </article>
+                        <article class="flex gap-5 py-7 sm:gap-7 sm:py-8" data-kid="1-3-2-1-1-2-4" data-name="process step article">
+                            <span class="px-display shrink-0 text-[2.7rem] leading-none text-[#72513b]/65 sm:text-[3.1rem]" data-kid="1-3-2-1-1-2-4-1" data-name="step number">
+                                04
+                            </span>
+                            <div data-kid="1-3-2-1-1-2-4-2" data-name="step body">
+                                <h3 class="px-display text-2xl font-semibold sm:text-[1.7rem]" data-kid="1-3-2-1-1-2-4-2-1" data-name="step title">
+                                    Thành phẩm và khả năng mở rộng
+                                </h3>
+                                <p class="mt-2 max-w-xl text-sm leading-6 text-[#59695d]" data-kid="1-3-2-1-1-2-4-2-2" data-name="step description">
+                                    Ủ tiếp để tạo phân hữu cơ giàu dinh dưỡng; có thể phối trộn cùng giá thể để phát triển sản phẩm có giá trị sử dụng cao hơn.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="mt-12 grid items-center gap-5 border-t border-[#bfd0bd] pt-8 sm:grid-cols-[1fr_auto]" data-kid="1-3-2-1-2" data-name="story footer container">
+                    <p class="px-display max-w-3xl text-2xl italic leading-snug text-[#375840] sm:text-3xl" data-kid="1-3-2-1-2-1" data-name="quote text">
+                        “Điều quan trọng nhất với chúng em không chỉ là sản phẩm, mà còn là học cách kiểm chứng một ý tưởng bằng quan sát thật.”
+                    </p>
+                    <a class="inline-flex items-center gap-2 justify-self-start text-sm font-semibold text-[#2f6f4e] underline decoration-[#9cb79c] underline-offset-4" data-kid="1-3-2-1-2-2" data-name="see products link" href="#san-pham">
+                        Xem các dạng sản phẩm
+                        <i aria-hidden="true" class="ti ti-arrow-down-right" data-kid="1-3-2-1-2-2-1" data-name="arrow icon">
+                        </i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- 5. Product cards and selected product detail -->
+        <section class="bg-[#faf8f4] px-5 py-16 md:py-24 lg:px-8" data-kid="1-3-3" data-name="products section" id="san-pham">
+            <div class="mx-auto max-w-[1240px]" data-kid="1-3-3-1" data-name="products container">
+                <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between" data-kid="1-3-3-1-1" data-name="section header container">
+                    <h2 class="px-display max-w-2xl text-5xl leading-[1.02] sm:text-6xl" data-kid="1-3-3-1-1-1" data-name="products section headline">
+                        Cùng một nền hữu cơ, nhiều cách sử dụng.
+                    </h2>
+                    <p class="max-w-md text-sm leading-7 text-[#657168]" data-kid="1-3-3-1-1-2" data-name="products section description">
+                        Phân hữu cơ là sản phẩm cốt lõi. Nhóm thử phát triển thành nhiều dạng khác nhau để thuận tiện hơn khi chăm sóc cây.
+                    </p>
+                </div>
+                <div class="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-5" data-kid="1-3-3-1-2" data-name="product cards grid">
+                    <button aria-pressed="false" class="px-product flex h-full flex-col border border-[#e1ded4] bg-white p-2 text-left shadow-sm" data-kid="1-3-3-1-2-1" data-name="product card button" data-product="base" type="button">
+                        <img alt="Đất mùn hữu cơ sẫm màu trong khay ươm" class="h-36 w-full object-cover" data-kid="1-3-3-1-2-1-1" data-name="product image" decoding="async" loading="lazy" src="https://images.pexels.com/photos/6509135/pexels-photo-6509135.jpeg?auto=compress&cs=tinysrgb&w=500&q=80"/>
+                        <span class="block min-h-12 px-2 pb-1 pt-3 text-sm font-semibold leading-5" data-kid="1-3-3-1-2-1-2" data-name="product title">
+                            Phân hữu cơ gốc
+                        </span>
+                        <span class="mt-2 block border-t border-[#e9e6dd] px-2 pt-2 text-xs leading-5 text-[#687267]" data-kid="1-3-3-1-2-1-3" data-name="product instruction 1">
+                            <b class="text-[#425a45]" data-kid="1-3-3-1-2-1-3-1" data-name="instruction label">
+                                Cách dùng:
+                            </b>
+                            Trộn cùng đất hoặc giá thể.
+                        </span>
+                        <span class="block px-2 pb-2 pt-1 text-xs leading-5 text-[#687267]" data-kid="1-3-3-1-2-1-4" data-name="product instruction 2">
+                            <b class="text-[#425a45]" data-kid="1-3-3-1-2-1-4-1" data-name="instruction label">
+                                Lưu ý:
+                            </b>
+                            Theo dõi phản ứng của cây.
+                        </span>
+                    </button>
+                    <button aria-pressed="false" class="px-product flex h-full flex-col border border-[#e1ded4] bg-white p-2 text-left shadow-sm" data-kid="1-3-3-1-2-2" data-name="product card button" data-product="pellet" type="button">
+                        <img alt="Hạt vật liệu khô nhỏ dùng làm hình ảnh minh họa viên nén" class="h-36 w-full object-cover" data-kid="1-3-3-1-2-2-1" data-name="product image" decoding="async" loading="lazy" src="https://images.pexels.com/photos/13865815/pexels-photo-13865815.jpeg?auto=compress&cs=tinysrgb&w=500&q=80"/>
+                        <span class="block min-h-12 px-2 pb-1 pt-3 text-sm font-semibold leading-5" data-kid="1-3-3-1-2-2-2" data-name="product title">
+                            Viên nén
+                        </span>
+                        <span class="mt-2 block border-t border-[#e9e6dd] px-2 pt-2 text-xs leading-5 text-[#687267]" data-kid="1-3-3-1-2-2-3" data-name="product instruction 1">
+                            <b class="text-[#425a45]" data-kid="1-3-3-1-2-2-3-1" data-name="instruction label">
+                                Cách dùng:
+                            </b>
+                            Đặt gần vùng rễ và tưới vừa đủ.
+                        </span>
+                        <span class="block px-2 pb-2 pt-1 text-xs leading-5 text-[#687267]" data-kid="1-3-3-1-2-2-4" data-name="product instruction 2">
+                            <b class="text-[#425a45]" data-kid="1-3-3-1-2-2-4-1" data-name="instruction label">
+                                Lưu ý:
+                            </b>
+                            Thời gian tan tùy độ ẩm.
+                        </span>
+                    </button>
+                    <button aria-pressed="true" class="px-product flex h-full flex-col border border-[#c6b6a3] bg-[#fffefa] p-2 text-left shadow-sm" data-kid="1-3-3-1-2-3" data-name="product card button" data-product="indicator" type="button">
+                        <div class="relative" data-kid="1-3-3-1-2-3-1" data-name="image wrapper">
+                            <img alt="Hoa đậu biếc xanh tím, nguyên liệu cho lớp chỉ thị màu" class="h-36 w-full object-cover" data-kid="1-3-3-1-2-3-1-1" data-name="product image" decoding="async" loading="lazy" src="https://images.pexels.com/photos/30569603/pexels-photo-30569603.jpeg?auto=compress&cs=tinysrgb&w=500&q=80"/>
+                        </div>
+                        <span class="block min-h-12 px-2 pb-1 pt-3 text-sm font-semibold leading-5" data-kid="1-3-3-1-2-3-2" data-name="product title">
+                            Viên tan chậm có chỉ thị màu
+                        </span>
+                        <span class="mt-2 block border-t border-[#e9e6dd] px-2 pt-2 text-xs leading-5 text-[#687267]" data-kid="1-3-3-1-2-3-3" data-name="product instruction 1">
+                            <b class="text-[#425a45]" data-kid="1-3-3-1-2-3-3-1" data-name="instruction label">
+                                Cách dùng:
+                            </b>
+                            Đặt gần rễ; quan sát màu khi tưới.
+                        </span>
+                        <span class="block px-2 pb-2 pt-1 text-xs leading-5 text-[#687267]" data-kid="1-3-3-1-2-3-4" data-name="product instruction 2">
+                            <b class="text-[#425a45]" data-kid="1-3-3-1-2-3-4-1" data-name="instruction label">
+                                Lưu ý:
+                            </b>
+                            Màu chỉ là gợi ý, cần kiểm chứng.
+                        </span>
+                    </button>
+                    <button aria-pressed="false" class="px-product flex h-full flex-col border border-[#e1ded4] bg-white p-2 text-left shadow-sm" data-kid="1-3-3-1-2-4" data-name="product card button" data-product="liquid" type="button">
+                        <img alt="Người đang sơ chế rau củ hữu cơ trong bếp" class="h-36 w-full object-cover" data-kid="1-3-3-1-2-4-1" data-name="product image" decoding="async" loading="lazy" src="https://images.pexels.com/photos/9475362/pexels-photo-9475362.jpeg?auto=compress&cs=tinysrgb&w=500&q=80"/>
+                        <span class="block min-h-12 px-2 pb-1 pt-3 text-sm font-semibold leading-5" data-kid="1-3-3-1-2-4-2" data-name="product title">
+                            Dạng lỏng / dung dịch
+                        </span>
+                        <span class="mt-2 block border-t border-[#e9e6dd] px-2 pt-2 text-xs leading-5 text-[#687267]" data-kid="1-3-3-1-2-4-3" data-name="product instruction 1">
+                            <b class="text-[#425a45]" data-kid="1-3-3-1-2-4-3-1" data-name="instruction label">
+                                Cách dùng:
+                            </b>
+                            Pha loãng theo hướng dẫn thử nghiệm.
+                        </span>
+                        <span class="block px-2 pb-2 pt-1 text-xs leading-5 text-[#687267]" data-kid="1-3-3-1-2-4-4" data-name="product instruction 2">
+                            <b class="text-[#425a45]" data-kid="1-3-3-1-2-4-4-1" data-name="instruction label">
+                                Lưu ý:
+                            </b>
+                            Nồng độ cần được xác định.
+                        </span>
+                    </button>
+                    <button aria-pressed="false" class="px-product flex h-full flex-col border border-[#e1ded4] bg-white p-2 text-left shadow-sm sm:col-span-2 lg:col-span-1" data-kid="1-3-3-1-2-5" data-name="product card button" data-product="powder" type="button">
+                        <img alt="Đất và vật liệu hữu cơ được vun trong vườn" class="h-36 w-full object-cover" data-kid="1-3-3-1-2-5-1" data-name="product image" decoding="async" loading="lazy" src="https://images.pexels.com/photos/6913399/pexels-photo-6913399.jpeg?auto=compress&cs=tinysrgb&w=500&q=80"/>
+                        <span class="block min-h-12 px-2 pb-1 pt-3 text-sm font-semibold leading-5" data-kid="1-3-3-1-2-5-2" data-name="product title">
+                            Dạng bột
+                        </span>
+                        <span class="mt-2 block border-t border-[#e9e6dd] px-2 pt-2 text-xs leading-5 text-[#687267]" data-kid="1-3-3-1-2-5-3" data-name="product instruction 1">
+                            <b class="text-[#425a45]" data-kid="1-3-3-1-2-5-3-1" data-name="instruction label">
+                                Cách dùng:
+                            </b>
+                            Trộn đều với đất trước khi gieo.
+                        </span>
+                        <span class="block px-2 pb-2 pt-1 text-xs leading-5 text-[#687267]" data-kid="1-3-3-1-2-5-4" data-name="product instruction 2">
+                            <b class="text-[#425a45]" data-kid="1-3-3-1-2-5-4-1" data-name="instruction label">
+                                Lưu ý:
+                            </b>
+                            Bảo quản nơi khô ráo.
+                        </span>
+                    </button>
+                </div>
+                <div aria-live="polite" class="px-paper mt-8 border border-[#d9ded3] bg-[#fffefa] p-5 sm:p-8" data-dynamic="true" data-kid="1-3-3-1-3" data-name="product detail display panel" data-reason="text content updated dynamically by product selection script" id="product-detail">
+                    <div class="flex items-start justify-between gap-5" data-kid="1-3-3-1-3-1" data-name="header flex wrapper">
+                        <div data-kid="1-3-3-1-3-1-1" data-name="header info">
+                            <p class="text-xs font-semibold text-[#72513b]" data-kid="1-3-3-1-3-1-1-1" data-name="label text">
+                                Thông tin sản phẩm đang chọn
+                            </p>
+                            <h3 class="px-display mt-1 text-3xl font-semibold sm:text-4xl" data-dynamic="true" data-kid="1-3-3-1-3-1-1-2" data-name="title text" data-reason="text replaced by selection script" id="product-title">
+                                Viên tan chậm có chỉ thị màu
+                            </h3>
+                            <p class="mt-3 max-w-3xl text-sm leading-7 text-[#5e695f]" data-dynamic="true" data-kid="1-3-3-1-3-1-1-3" data-name="summary text" data-reason="text replaced by selection script" id="product-summary">
+                                Từ nền phân hữu cơ đã ủ, viên được nén để tan chậm và có lớp chỉ thị màu chiết xuất từ hoa đậu biếc — điểm nghiên cứu đặc biệt của nhóm.
+                            </p>
+                        </div>
+                        <div aria-hidden="true" class="hidden size-14 shrink-0 items-center justify-center rounded-full border border-[#b1aacd] bg-[#514c97] text-2xl text-white sm:flex" data-kid="1-3-3-1-3-1-2" data-name="icon wrapper">
+                            <i class="ti ti-droplet" data-kid="1-3-3-1-3-1-2-1" data-name="droplet icon">
+                            </i>
+                        </div>
+                    </div>
+                    <div class="mt-6 grid gap-5 border-t border-[#e4e2d9] pt-5 md:grid-cols-3" data-kid="1-3-3-1-3-2" data-name="details grid">
+                        <div data-kid="1-3-3-1-3-2-1" data-name="method container">
+                            <h4 class="text-sm font-bold" data-kid="1-3-3-1-3-2-1-1" data-name="method title">
+                                Cách làm
+                            </h4>
+                            <p class="mt-2 text-sm leading-6 text-[#647066]" data-dynamic="true" data-kid="1-3-3-1-3-2-1-2" data-name="method text" data-reason="text replaced by selection script" id="product-made">
+                                Ép nền phân hữu cơ thành viên tan chậm, sau đó phủ lớp chỉ thị màu từ hoa đậu biếc.
+                            </p>
+                        </div>
+                        <div data-kid="1-3-3-1-3-2-2" data-name="usage container">
+                            <h4 class="text-sm font-bold" data-kid="1-3-3-1-3-2-2-1" data-name="usage title">
+                                Cách dùng
+                            </h4>
+                            <p class="mt-2 text-sm leading-6 text-[#647066]" data-dynamic="true" data-kid="1-3-3-1-3-2-2-2" data-name="usage text" data-reason="text replaced by selection script" id="product-use">
+                                Đặt viên gần vùng rễ và tưới nước theo nhu cầu của cây; quan sát màu như một gợi ý cần kiểm chứng.
+                            </p>
+                        </div>
+                        <div data-kid="1-3-3-1-3-2-3" data-name="notes container">
+                            <h4 class="text-sm font-bold" data-kid="1-3-3-1-3-2-3-1" data-name="note title">
+                                Lưu ý
+                            </h4>
+                            <p class="mt-2 text-sm leading-6 text-[#647066]" data-dynamic="true" data-kid="1-3-3-1-3-2-3-2" data-name="note text" data-reason="text replaced by selection script" id="product-note">
+                                Màu sắc chỉ hỗ trợ quan sát, không thay thế phép đo chuyên dụng. Liều dùng cần được thử nghiệm theo từng loại cây.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-6 border border-dashed border-[#a88e75]/70 bg-[#f7f4ed] px-4 py-4 text-sm leading-6 text-[#72513b]" data-kid="1-3-3-1-3-3" data-name="research profile footer">
+                        <span class="font-semibold" data-kid="1-3-3-1-3-3-1" data-name="label">
+                            Hồ sơ nghiên cứu:
+                        </span>
+                        Khu vực dành cho giấy kiểm nghiệm hàm lượng dinh dưỡng (sẽ bổ sung sau)
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 6. Educational virtual lab -->
+        <section class="bg-[#e5efe3] px-5 py-16 md:py-24 lg:px-8" data-kid="1-3-4" data-name="virtual lab section" id="thi-nghiem">
+            <div class="mx-auto max-w-[1240px]" data-kid="1-3-4-1" data-name="virtual lab content">
+                <div class="mb-8 max-w-3xl" data-kid="1-3-4-1-1" data-name="lab section header">
+                    <h2 class="px-display text-5xl leading-tight sm:text-6xl" data-kid="1-3-4-1-1-1" data-name="lab headline">
+                        Thử một điều kiện trồng, quan sát một khả năng.
+                    </h2>
+                    <p class="mt-4 max-w-2xl text-sm leading-7 text-[#5f6d61]" data-kid="1-3-4-1-1-2" data-name="lab description">
+                        Phòng thí nghiệm ảo giúp hình dung những yếu tố thường ảnh hưởng đến cây. Hãy chọn các điều kiện rồi chạy mô phỏng.
+                    </p>
+                </div>
+                <div class="grid overflow-hidden border border-[#cbd8c8] bg-[#faf8f4] lg:grid-cols-2" data-kid="1-3-4-1-2" data-name="lab content layout">
+                    <form class="px-rule flex flex-col p-6 sm:p-9 lg:min-h-[620px] lg:p-10" data-kid="1-3-4-1-2-1" data-name="lab configuration form" id="lab-form">
+                        <div class="grid gap-x-4 gap-y-4 sm:grid-cols-2" data-kid="1-3-4-1-2-1-1" data-name="inputs grid">
+                            <label class="text-sm font-semibold" data-kid="1-3-4-1-2-1-1-1" data-name="plant select field label" for="lab-plant">
+                                Loại cây
+                                <select class="mt-2 w-full border border-[#d8ddd4] bg-white px-3 py-3 text-sm text-[#314d39] focus:border-[#2f6f4e] focus:outline-2 focus:outline-[#2f6f4e]" data-kid="1-3-4-1-2-1-1-1-1" data-name="select menu" id="lab-plant">
+                                    <option data-kid="1-3-4-1-2-1-1-1-1-1" data-name="option 1">
+                                        Rau cải
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-1-1-2" data-name="option 2">
+                                        Cà chua
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-1-1-3" data-name="option 3">
+                                        Lúa
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-1-1-4" data-name="option 4">
+                                        Dưa leo
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-1-1-5" data-name="option 5">
+                                        Hoa hồng
+                                    </option>
+                                </select>
+                            </label>
+                            <label class="text-sm font-semibold" data-kid="1-3-4-1-2-1-1-2" data-name="stage select field label" for="lab-stage">
+                                Giai đoạn sinh trưởng
+                                <select class="mt-2 w-full border border-[#d8ddd4] bg-white px-3 py-3 text-sm text-[#314d39] focus:border-[#2f6f4e] focus:outline-2 focus:outline-[#2f6f4e]" data-kid="1-3-4-1-2-1-1-2-1" data-name="select menu" id="lab-stage">
+                                    <option data-kid="1-3-4-1-2-1-1-2-1-1" data-name="option 1">
+                                        Cây con
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-2-1-2" data-name="option 2">
+                                        Sinh trưởng thân lá
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-2-1-3" data-name="option 3">
+                                        Ra hoa – đậu quả
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-2-1-4" data-name="option 4">
+                                        Thu hoạch
+                                    </option>
+                                </select>
+                            </label>
+                            <label class="text-sm font-semibold" data-kid="1-3-4-1-2-1-1-3" data-name="soil select field label" for="lab-soil">
+                                Loại đất
+                                <select class="mt-2 w-full border border-[#d8ddd4] bg-white px-3 py-3 text-sm text-[#314d39] focus:border-[#2f6f4e] focus:outline-2 focus:outline-[#2f6f4e]" data-kid="1-3-4-1-2-1-1-3-1" data-name="select menu" id="lab-soil">
+                                    <option data-kid="1-3-4-1-2-1-1-3-1-1" data-name="option 1">
+                                        Đất thịt
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-3-1-2" data-name="option 2">
+                                        Đất cát
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-3-1-3" data-name="option 3">
+                                        Đất phù sa
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-3-1-4" data-name="option 4">
+                                        Đất trồng chậu
+                                    </option>
+                                </select>
+                            </label>
+                            <label class="text-sm font-semibold" data-kid="1-3-4-1-2-1-1-4" data-name="fertilizer select field label" for="lab-fertilizer">
+                                Loại phân
+                                <select class="mt-2 w-full border border-[#d8ddd4] bg-white px-3 py-3 text-sm text-[#314d39] focus:border-[#2f6f4e] focus:outline-2 focus:outline-[#2f6f4e]" data-kid="1-3-4-1-2-1-1-4-1" data-name="select menu" id="lab-fertilizer">
+                                    <option data-kid="1-3-4-1-2-1-1-4-1-1" data-name="option 1">
+                                        Phân hữu cơ gốc
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-4-1-2" data-name="option 2">
+                                        Viên nén
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-4-1-3" data-name="option 3">
+                                        Viên tan chậm có chỉ thị màu
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-4-1-4" data-name="option 4">
+                                        Dạng lỏng / dung dịch
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-4-1-5" data-name="option 5">
+                                        Dạng bột
+                                    </option>
+                                </select>
+                            </label>
+                            <label class="text-sm font-semibold sm:col-span-2" data-kid="1-3-4-1-2-1-1-5" data-name="weather select field label" for="lab-weather">
+                                Thời tiết
+                                <select class="mt-2 w-full border border-[#d8ddd4] bg-white px-3 py-3 text-sm text-[#314d39] focus:border-[#2f6f4e] focus:outline-2 focus:outline-[#2f6f4e]" data-kid="1-3-4-1-2-1-1-5-1" data-name="select menu" id="lab-weather">
+                                    <option data-kid="1-3-4-1-2-1-1-5-1-1" data-name="option 1">
+                                        Nắng nhẹ
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-5-1-2" data-name="option 2">
+                                        Nhiều mây
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-5-1-3" data-name="option 3">
+                                        Mưa thường xuyên
+                                    </option>
+                                    <option data-kid="1-3-4-1-2-1-1-5-1-4" data-name="option 4">
+                                        Nắng nóng
+                                    </option>
+                                </select>
+                            </label>
+                        </div>
+                        <button class="mt-6 inline-flex self-start items-center gap-2 rounded-md bg-[#2f6f4e] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1f4d3a]" data-kid="1-3-4-1-2-1-2" data-name="run simulation button" type="submit">
+                            <i aria-hidden="true" class="ti ti-flask-2" data-kid="1-3-4-1-2-1-2-1" data-name="flask icon">
+                            </i>
+                            Chạy thí nghiệm
+                        </button>
+                    </form>
+                    <div class="border-t border-[#d1ddcf] bg-[#dce9da] p-6 sm:p-9 lg:border-l lg:border-t-0 lg:p-10" data-kid="1-3-4-1-2-2" data-name="lab simulation output display">
+                        <div class="rounded-[28px] border border-[#1f4d3a]/20 bg-[#fbfaf4] p-4 shadow-inner sm:p-5" data-kid="1-3-4-1-2-2-1" data-name="simulation panel">
+                            <div class="relative flex h-44 items-end justify-center overflow-hidden rounded-[22px] bg-gradient-to-b from-[#edf3e8] to-[#d0dfc7] sm:h-52" data-kid="1-3-4-1-2-2-1-1" data-name="sim graphic frame">
+                                <div class="absolute left-5 top-5 rounded-full border border-[#c7d8c1] bg-white/70 px-3 py-1 text-xs font-medium text-[#47654a]" data-kid="1-3-4-1-2-2-1-1-1" data-name="badge text">
+                                    Mô phỏng cây
+                                </div>
+                                <svg aria-labelledby="plant-illustration-title" class="h-40 w-48 sm:h-48 sm:w-56" data-kid="1-3-4-1-2-2-1-1-2" data-name="plant illustration" role="img" viewbox="0 0 200 180">
+                                    <title id="plant-illustration-title">
+                                        Minh họa cây con đang phát triển trên đất
+                                    </title>
+                                    <path d="M99 145V65" stroke="#55764e" stroke-linecap="round" stroke-width="8">
+                                    </path>
+                                    <path d="M98 94C69 93 53 75 58 51c23-1 40 12 40 39Z" fill="#4f8052">
+                                    </path>
+                                    <path d="M101 78c1-25 20-39 44-35-1 23-15 37-44 38Z" fill="#739b65">
+                                    </path>
+                                    <path d="M100 109c-19 0-30-11-29-27 17 0 29 9 29 27Z" fill="#6a925f">
+                                    </path>
+                                    <path d="M37 144h126l-18 27H55Z" fill="#72513b">
+                                    </path>
+                                    <path d="M39 144c28-11 89-11 122 0" fill="none" stroke="#9d7958" stroke-width="7">
+                                    </path>
+                                    <circle cx="66" cy="139" fill="#d5bd8d" r="2">
+                                    </circle>
+                                    <circle cx="132" cy="140" fill="#d5bd8d" r="2">
+                                    </circle>
+                                </svg>
+                            </div>
+                            <div class="mt-4 flex flex-wrap items-center justify-between gap-2" data-kid="1-3-4-1-2-2-1-2" data-name="output metadata">
+                                <h3 class="px-display text-2xl font-semibold" data-dynamic="true" data-kid="1-3-4-1-2-2-1-2-1" data-name="sim status title" data-reason="text updated by sim script" id="lab-state">
+                                    Cây đang phát triển ổn định
+                                </h3>
+                                <span class="rounded-full bg-[#e0eee2] px-3 py-1 text-xs font-semibold text-[#2f6f4e]" data-dynamic="true" data-kid="1-3-4-1-2-2-1-2-2" data-name="sim status tag" data-reason="text updated by sim script" id="lab-state-chip">
+                                    Ổn định
+                                </span>
+                            </div>
+                            <div class="mt-4 space-y-3 text-xs sm:text-sm" data-kid="1-3-4-1-2-2-1-3" data-name="stats gauge container">
+                                <div data-kid="1-3-4-1-2-2-1-3-1" data-name="growth stat container">
+                                    <div class="mb-1 flex justify-between" data-kid="1-3-4-1-2-2-1-3-1-1" data-name="header flex">
+                                        <span data-kid="1-3-4-1-2-2-1-3-1-1-1" data-name="label">
+                                            Sinh trưởng
+                                        </span>
+                                        <b data-dynamic="true" data-kid="1-3-4-1-2-2-1-3-1-1-2" data-name="value text" data-reason="text updated by sim script" id="growth-value">
+                                            78%
+                                        </b>
+                                    </div>
+                                    <div class="h-2 bg-[#e5e6de]" data-kid="1-3-4-1-2-2-1-3-1-2" data-name="progress track">
+                                        <div class="h-2 bg-[#4a7953]" data-dynamic="true" data-kid="1-3-4-1-2-2-1-3-1-2-1" data-name="progress bar" data-reason="width updated by sim script" id="growth-bar" style="width:78%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-kid="1-3-4-1-2-2-1-3-2" data-name="moisture stat container">
+                                    <div class="mb-1 flex justify-between" data-kid="1-3-4-1-2-2-1-3-2-1" data-name="header flex">
+                                        <span data-kid="1-3-4-1-2-2-1-3-2-1-1" data-name="label">
+                                            Độ ẩm đất
+                                        </span>
+                                        <b data-dynamic="true" data-kid="1-3-4-1-2-2-1-3-2-1-2" data-name="value text" data-reason="text updated by sim script" id="moisture-value">
+                                            64%
+                                        </b>
+                                    </div>
+                                    <div class="h-2 bg-[#e5e6de]" data-kid="1-3-4-1-2-2-1-3-2-2" data-name="progress track">
+                                        <div class="h-2 bg-[#9a7757]" data-dynamic="true" data-kid="1-3-4-1-2-2-1-3-2-2-1" data-name="progress bar" data-reason="width updated by sim script" id="moisture-bar" style="width:64%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-kid="1-3-4-1-2-2-1-3-3" data-name="nutrition stat container">
+                                    <div class="mb-1 flex justify-between" data-kid="1-3-4-1-2-2-1-3-3-1" data-name="header flex">
+                                        <span data-kid="1-3-4-1-2-2-1-3-3-1-1" data-name="label">
+                                            Dưỡng chất
+                                        </span>
+                                        <b data-dynamic="true" data-kid="1-3-4-1-2-2-1-3-3-1-2" data-name="value text" data-reason="text updated by sim script" id="nutrition-value">
+                                            71%
+                                        </b>
+                                    </div>
+                                    <div class="h-2 bg-[#e5e6de]" data-kid="1-3-4-1-2-2-1-3-3-2" data-name="progress track">
+                                        <div class="h-2 bg-[#749a67]" data-dynamic="true" data-kid="1-3-4-1-2-2-1-3-3-2-1" data-name="progress bar" data-reason="width updated by sim script" id="nutrition-bar" style="width:71%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-sm leading-6 text-[#536657]" data-dynamic="true" data-kid="1-3-4-1-2-2-2" data-name="tip text" data-reason="text updated by sim script" id="lab-tip">
+                            Mẹo: Cây con cần đất ẩm vừa phải; tưới quá nhiều có thể làm rễ thiếu không khí.
+                        </p>
+                        <p class="mt-2 text-xs leading-5 text-[#758174]" data-kid="1-3-4-1-2-2-3" data-name="disclaimer text">
+                            Mô phỏng đơn giản phục vụ mục đích học tập; kết quả không thay thế thử nghiệm thực tế.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 7. Interactive butterfly-pea pH color scanner. -->
+        <style>
+            .px-ph-section { padding-block: 64px; }
+            .px-ph-title { margin-bottom: 20px; font-size: clamp(2.25rem, 4vw, 3.1rem); line-height: 1.08; }
+            .px-ph { --ph1:#c2185b;--ph2:#d81b60;--ph3:#8e24aa;--ph4:#5e35b1;--ph5:#3949ab;--ph6:#1e88e5;--ph7:#039be5;--ph8:#00acc1;--ph9:#00897b;--ph10:#43a047;--ph11:#7cb342;--ph12:#c0ca33;--ph13:#fdd835;--ph14:#fb8c00; overflow:hidden; border:1px solid #d9ded3; background:#fffefa; box-shadow:0 3px 12px rgba(41,58,42,.07); color:#1f4d3a; }
+            .px-ph * { box-sizing:border-box; }
+            .px-ph button,.px-ph input { font:inherit; }
+            .px-ph button { color:inherit; }
+            .px-ph__header { padding:clamp(20px,3vw,34px); border-bottom:1px solid #d9ded3; background:#fffefa; }
+            .px-ph__eyebrow { color:#72513b; font-size:.68rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; }
+            .px-ph__title { margin-top:3px; font-size:clamp(1.85rem,3.2vw,2.5rem); line-height:1.1; }
+            .px-ph__intro { max-width:75ch; margin-top:9px; color:#5e695f; font-size:.82rem; line-height:1.75; }
+            .px-ph__workspace { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+            .px-ph__capture,.px-ph__analysis { min-width:0; padding:clamp(18px,3vw,30px); }
+            .px-ph__tabs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:5px; padding:5px; border:1px solid #d9e3d6; background:#e7f0e5; }
+            .px-ph__tab { display:inline-flex; min-height:44px; align-items:center; justify-content:center; gap:7px; padding:9px 10px; border:1px solid transparent; background:transparent; color:#59715d; font-size:.75rem; font-weight:600; cursor:pointer; transition:color .16s,background-color .16s,border-color .16s; }
+            .px-ph__tab:hover:not([aria-selected="true"]) { background:rgba(255,255,255,.62); color:#1f4d3a; }
+            .px-ph__tab[aria-selected="true"] { border-color:#d8e0d5; background:#fffefa; color:#1f4d3a; box-shadow:0 1px 4px rgba(41,58,42,.06); }
+            .px-ph__tab i { color:#2f6f4e; font-size:1rem; }
+            .px-ph__panel { min-height:100px; padding-top:16px; }
+            .px-ph__panel[hidden],.px-ph [hidden] { display:none!important; }
+            .px-ph__camera { position:relative; min-height:210px; overflow:hidden; background:#20382d; }
+            .px-ph__camera video { display:block; width:100%; max-height:360px; aspect-ratio:4/3; object-fit:cover; transform:scaleX(-1); }
+            .px-ph__guide { position:absolute; top:50%; left:50%; width:min(180px,48vw); aspect-ratio:1; border:2px solid rgba(255,255,255,.82); border-radius:50%; box-shadow:0 0 0 999px rgba(0,0,0,.14); pointer-events:none; transform:translate(-50%,-50%); }
+            .px-ph__hint { position:absolute; right:10px; bottom:10px; left:10px; width:fit-content; max-width:calc(100% - 20px); margin-inline:auto; padding:4px 10px; background:rgba(31,77,58,.84); color:#fff; font-size:.65rem; text-align:center; }
+            .px-ph__actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:13px; }
+            .px-ph__button { display:inline-flex; min-height:42px; align-items:center; justify-content:center; gap:7px; padding:9px 13px; border:1px solid #2f6f4e; border-radius:6px; background:#2f6f4e; color:#fff!important; font-size:.73rem; font-weight:700; cursor:pointer; }
+            .px-ph__button:hover:not(:disabled) { border-color:#1f4d3a; background:#1f4d3a; }
+            .px-ph__button--earth { border-color:#72513b; background:#72513b; }
+            .px-ph__button--earth:hover:not(:disabled) { border-color:#5f412f; background:#5f412f; }
+            .px-ph__button--outline { border-color:rgba(114,81,59,.55); background:transparent; color:#72513b!important; }
+            .px-ph__button:disabled { border-color:#c9d1c7; background:#dfe4dc; color:#7b857b!important; cursor:not-allowed; }
+            .px-ph__upload-label { display:block; margin-bottom:8px; color:#354c3a; font-size:.76rem; font-weight:700; }
+            .px-ph__file { display:block; width:100%; min-height:48px; padding:7px; border:1px solid #bdcbbb; background:#fbfcf8; color:#5e695f; font-size:.72rem; cursor:pointer; }
+            .px-ph__file::file-selector-button { min-height:32px; margin-right:10px; padding:6px 10px; border:1px solid #b8cbb8; background:#e7f0e5; color:#1f4d3a; font:inherit; font-weight:600; cursor:pointer; }
+            .px-ph__help { margin-top:7px; color:#778276; font-size:.66rem; line-height:1.6; }
+            .px-ph__status { min-height:25px; margin-top:8px; color:#617063; font-size:.7rem; line-height:1.6; }
+            .px-ph__status.is-error { color:#8b3f35; }
+            .px-ph__preview { display:grid; min-height:185px; place-items:center; margin-top:7px; padding:10px; border:1px solid #d9ded3; background:#f5f4ec; }
+            .px-ph__empty { max-width:30ch; color:#81877e; font-family:'Crimson Pro',Georgia,serif; font-size:1.15rem; font-style:italic; line-height:1.35; text-align:center; }
+            .px-ph__canvas { display:block; width:auto; max-width:100%; max-height:290px; object-fit:contain; }
+            .px-ph__analysis { border-left:1px solid #d1ddcf; background:#edf3e9; }
+            .px-ph__result-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+            .px-ph__result-heading h4 { margin-top:3px; font-size:1.5rem; line-height:1.12; }
+            .px-ph__result-mark { display:grid; width:40px; height:40px; flex:0 0 auto; place-items:center; border:1px solid #b7ccb5; border-radius:50%; background:#e0eee2; color:#2f6f4e; font-size:1.2rem; }
+            .px-ph__result { min-height:94px; margin-top:13px; padding:13px; border:1px solid #d9e1d5; background:#fffefa; color:#647066; font-size:.72rem; line-height:1.7; }
+            .px-ph__result p+p { margin-top:3px; }
+            .px-ph__color-line { display:flex; align-items:center; flex-wrap:wrap; gap:7px; color:#455c48; font-weight:600; }
+            .px-ph__swatch { display:inline-block; width:21px; height:21px; flex:0 0 auto; border:2px solid #fff; border-radius:50%; background:var(--sample-color,transparent); box-shadow:0 0 0 1px #cdd5c9; }
+            .px-ph__estimate { color:#1f4d3a; font-size:.83rem; }
+            .px-ph__pigment { color:#2f6f4e; }
+            .px-ph__result-note { color:#785a32; }
+.px-ph__soil { margin-top:10px; padding:11px 12px; border-left:3px solid var(--soil-tone,#2f6f4e); background:#f5f3e9; }
+            .px-ph__soil-title { display:flex; align-items:center; gap:7px; color:#72513b; font-size:.62rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+            .px-ph__soil-title i { color:#2f6f4e; font-size:1rem; }
+            .px-ph__soil-name { margin-top:2px!important; color:var(--soil-tone,#1f4d3a); font-size:.91rem; font-weight:700; }
+            .px-ph__soil-advice { margin-top:2px!important; color:#5e695f; font-size:.67rem; line-height:1.65; }
+            .px-ph__soil--alkaline { border-left-color:#ff9a16; background:#fff8df; }
+            .px-ph__soil--alkaline .px-ph__soil-title { color:#f16800; font-size:.68rem; }
+            .px-ph__soil--alkaline .px-ph__soil-title i { color:#2f6f4e; }
+            .px-ph__soil--alkaline .px-ph__soil-name { color:#592cc3; }
+            .px-ph__soil--alkaline .px-ph__soil-advice { color:#774411; font-size:.72rem; line-height:1.75; }
+            .px-ph__reference { margin-top:19px; padding-top:15px; border-top:1px solid #cbd8c8; }
+            .px-ph__reference-heading { display:flex; align-items:baseline; justify-content:space-between; gap:10px; }
+            .px-ph__reference-heading h4 { font-size:.75rem; font-weight:700; }
+            .px-ph__reference-heading span { color:#768174; font-size:.62rem; }
+            .px-ph__scale { display:grid; grid-template-columns:repeat(14,minmax(0,1fr)); overflow:hidden; margin:10px 0 0; padding:0; border:1px solid rgba(31,77,58,.14); list-style:none; }
+            .px-ph__scale li { display:grid; min-height:31px; place-items:center; color:#fff; font-size:clamp(.48rem,.8vw,.62rem); font-weight:700; text-shadow:0 1px 2px rgba(0,0,0,.36); }
+            .px-ph__scale li:nth-child(1){background:var(--ph1)}.px-ph__scale li:nth-child(2){background:var(--ph2)}.px-ph__scale li:nth-child(3){background:var(--ph3)}.px-ph__scale li:nth-child(4){background:var(--ph4)}.px-ph__scale li:nth-child(5){background:var(--ph5)}.px-ph__scale li:nth-child(6){background:var(--ph6)}.px-ph__scale li:nth-child(7){background:var(--ph7)}.px-ph__scale li:nth-child(8){background:var(--ph8)}.px-ph__scale li:nth-child(9){background:var(--ph9)}.px-ph__scale li:nth-child(10){background:var(--ph10)}.px-ph__scale li:nth-child(11){background:var(--ph11)}.px-ph__scale li:nth-child(12){background:var(--ph12)}.px-ph__scale li:nth-child(13){background:var(--ph13);color:#35402e;text-shadow:none}.px-ph__scale li:nth-child(14){background:var(--ph14)}
+            .px-ph__legend { display:grid; gap:5px; margin:10px 0 0; padding:0; list-style:none; }
+            .px-ph__legend li { display:grid; grid-template-columns:62px minmax(0,1fr); gap:8px; color:#687267; font-size:.64rem; line-height:1.55; }
+            .px-ph__legend strong { color:#1f4d3a; }
+            .px-ph__disclaimer { display:flex; align-items:flex-start; gap:8px; margin-top:15px; padding-top:11px; border-top:1px solid #cbd8c8; color:#758174; font-size:.62rem; font-style:italic; line-height:1.65; }
+            .px-ph__disclaimer i { flex:0 0 auto; margin-top:1px; color:#72513b; font-size:.95rem; }
+            .px-ph :focus-visible { outline:3px solid #91b395; outline-offset:2px; }
+            @media(max-width:820px){.px-ph__workspace{grid-template-columns:minmax(0,1fr)}.px-ph__analysis{border-top:1px solid #d1ddcf;border-left:0}}
+            @media(max-width:600px){.px-ph-section{padding-block:44px}.px-ph-title{font-size:2.2rem}.px-ph__header{padding:20px 17px}.px-ph__capture,.px-ph__analysis{padding:17px}.px-ph__tabs{gap:3px;padding:4px}.px-ph__tab{gap:5px;padding-inline:5px;font-size:.66rem}.px-ph__camera{min-height:185px}.px-ph__actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.px-ph__button{padding-inline:8px}.px-ph__stop{grid-column:1/-1}.px-ph__preview{min-height:155px}.px-ph__scale li{min-height:27px;font-size:.48rem}.px-ph__legend li{grid-template-columns:54px minmax(0,1fr);font-size:.61rem}}
+        </style>
+        <section aria-labelledby="scan-heading" class="px-ph-section bg-[#faf8f4] px-5 md:px-8" data-kid="1-3-5" data-name="interactive pH scanner section">
+            <div class="mx-auto max-w-[1240px]" data-kid="1-3-5-1" data-name="pH scan content container">
+                <h2 class="px-display px-ph-title" data-kid="1-3-5-1-1" data-name="scan headline" id="scan-heading">
+                    Quét màu viên phân tan chậm
+                </h2>
+                <div class="px-ph" data-kid="1-3-5-1-2" data-name="pH scanner card" id="ph-scan">
+                    <header class="px-ph__header" data-kid="1-3-5-1-2-1" data-name="scanner header container">
+                        <p class="px-ph__eyebrow" data-kid="1-3-5-1-2-1-1" data-name="scanner eyebrow">
+                            Quan sát màu · Hoa đậu biếc
+                        </p>
+                        <h3 class="px-display px-ph__title" data-kid="1-3-5-1-2-1-2" data-name="scanner title">
+                            Phân tích pH đất bằng hoa đậu biếc
+                        </h3>
+                        <p class="px-ph__intro" data-kid="1-3-5-1-2-1-3" data-name="scanner description text">
+                            Chụp trực tiếp hoặc tải ảnh dung dịch hoa đậu biếc sau khi ngâm với mẫu đất để ước lượng pH và nhận kết luận về loại đất.
+                        </p>
+                    </header>
+                    <div class="px-ph__workspace" data-kid="1-3-5-1-2-2" data-name="scanner workspace container">
+                        <div class="px-ph__capture" data-kid="1-3-5-1-2-2-1" data-name="capture and upload controls container">
+                            <div aria-label="Chọn cách đưa ảnh mẫu vào" class="px-ph__tabs" data-kid="1-3-5-1-2-2-1-1" data-name="scanner input tab list" role="tablist">
+                                <button aria-controls="ph-panel-camera" aria-selected="true" class="px-ph__tab" data-kid="1-3-5-1-2-2-1-1-1" data-name="camera tab" data-scan-tab="camera" id="ph-tab-camera" role="tab" tabindex="0" type="button">
+                                    <i aria-hidden="true" class="ti ti-camera" data-kid="1-3-5-1-2-2-1-1-1-1" data-name="camera icon">
+                                    </i>
+                                    Chụp trực tiếp
+                                </button>
+                                <button aria-controls="ph-panel-upload" aria-selected="false" class="px-ph__tab" data-kid="1-3-5-1-2-2-1-1-2" data-name="upload tab" data-scan-tab="upload" id="ph-tab-upload" role="tab" tabindex="-1" type="button">
+                                    <i aria-hidden="true" class="ti ti-photo-up" data-kid="1-3-5-1-2-2-1-1-2-1" data-name="upload icon">
+                                    </i>
+                                    Tải ảnh lên
+                                </button>
+                            </div>
+                            <div aria-labelledby="ph-tab-camera" class="px-ph__panel" data-kid="1-3-5-1-2-2-1-2" data-name="camera panel" data-scan-panel="camera" id="ph-panel-camera" role="tabpanel" tabindex="0">
+                                <div class="px-ph__camera" data-kid="1-3-5-1-2-2-1-2-1" data-name="camera preview frame" hidden="" id="ph-camera-wrap">
+                                    <video aria-label="Hình ảnh xem trước từ camera" autoplay="" data-kid="1-3-5-1-2-2-1-2-1-1" data-name="camera video preview" id="ph-video" muted="" playsinline="">
+                                    </video>
+                                    <span aria-hidden="true" class="px-ph__guide" data-kid="1-3-5-1-2-2-1-2-1-2" data-name="camera center guide ring">
+                                    </span>
+                                    <span class="px-ph__hint" data-kid="1-3-5-1-2-2-1-2-1-3" data-name="camera hint text">
+                                        Đặt dung dịch vào giữa vòng tròn
+                                    </span>
+                                </div>
+                                <div class="px-ph__actions" data-kid="1-3-5-1-2-2-1-2-2" data-name="camera actions container">
+                                    <button class="px-ph__button" data-kid="1-3-5-1-2-2-1-2-2-1" data-name="start camera button" id="ph-start-camera" type="button">
+                                        <i aria-hidden="true" class="ti ti-camera" data-kid="1-3-5-1-2-2-1-2-2-1-1" data-name="start camera icon">
+                                        </i>
+                                        Bật camera
+                                    </button>
+                                    <button class="px-ph__button px-ph__button--earth" data-kid="1-3-5-1-2-2-1-2-2-2" data-name="capture image button" disabled="" id="ph-capture" type="button">
+                                        <i aria-hidden="true" class="ti ti-camera-selfie" data-kid="1-3-5-1-2-2-1-2-2-2-1" data-name="capture image icon">
+                                        </i>
+                                        Chụp ảnh
+                                    </button>
+                                    <button class="px-ph__button px-ph__button--outline px-ph__stop" data-kid="1-3-5-1-2-2-1-2-2-3" data-name="stop camera button" hidden="" id="ph-stop-camera" type="button">
+                                        Tắt camera
+                                    </button>
+                                </div>
+                            </div>
+                            <div aria-labelledby="ph-tab-upload" class="px-ph__panel" data-kid="1-3-5-1-2-2-1-3" data-name="upload panel" data-scan-panel="upload" hidden="" id="ph-panel-upload" role="tabpanel" tabindex="0">
+                                <label class="px-ph__upload-label" data-kid="1-3-5-1-2-2-1-3-1" data-name="sample photo label" for="ph-file-input">
+                                    Chọn ảnh dung dịch đã đổi màu
+                                </label>
+                                <input accept="image/*" aria-describedby="ph-upload-help" class="px-ph__file" data-kid="1-3-5-1-2-2-1-3-2" data-name="sample photo file input" id="ph-file-input" type="file"/>
+                                <p class="px-ph__help" data-kid="1-3-5-1-2-2-1-3-3" data-name="local processing help text" id="ph-upload-help">
+                                    Chọn một ảnh rõ màu, đủ sáng; ảnh được xử lý ngay trên thiết bị.
+                                </p>
+                            </div>
+                            <p aria-live="polite" class="px-ph__status" data-dynamic="true" data-kid="1-3-5-1-2-2-1-4" data-name="live camera and upload status" data-reason="text updated by scan script" id="ph-scan-status" role="status">
+                                Chưa có ảnh nào được chọn.
+                            </p>
+                            <div class="px-ph__preview" data-kid="1-3-5-1-2-2-1-5" data-name="sample image preview container" id="ph-scan-preview">
+                                <p class="px-ph__empty" data-kid="1-3-5-1-2-2-1-5-1" data-name="preview empty state" id="ph-preview-empty">
+                                    Ảnh mẫu sẽ xuất hiện tại đây sau khi chụp hoặc tải lên.
+                                </p>
+                                <canvas aria-label="Ảnh mẫu được dùng để phân tích màu" class="px-ph__canvas" data-kid="1-3-5-1-2-2-1-5-2" data-name="sample image analysis canvas" hidden="" id="ph-scan-canvas">
+                                </canvas>
+                            </div>
+                        </div>
+                        <aside aria-labelledby="ph-result-title" class="px-ph__analysis" data-kid="1-3-5-1-2-2-2" data-name="pH analysis sidebar">
+                            <div class="px-ph__result-heading" data-kid="1-3-5-1-2-2-2-1" data-name="analysis heading container">
+                                <div data-kid="1-3-5-1-2-2-2-1-4" data-name="analysis header text container">
+                                    <p class="px-ph__eyebrow" data-kid="1-3-5-1-2-2-2-1-1" data-name="analysis eyebrow">
+                                        Kết quả tham khảo
+                                    </p>
+                                    <h4 class="px-display" data-kid="1-3-5-1-2-2-2-1-2" data-name="analysis title" id="ph-result-title">
+                                        Màu dung dịch
+                                    </h4>
+                                </div>
+                                <span aria-hidden="true" class="px-ph__result-mark" data-kid="1-3-5-1-2-2-2-1-3" data-name="droplet marker container">
+                                    <i aria-hidden="true" class="ti ti-droplet" data-kid="1-3-5-1-2-2-2-1-3-1" data-name="droplet icon">
+                                    </i>
+                                </span>
+                            </div>
+                            <div aria-atomic="true" aria-live="polite" class="px-ph__result" data-dynamic="true" data-kid="1-3-5-1-2-2-2-2" data-name="live pH result" data-reason="text elements updated by scan script" id="ph-result">
+                                Chưa có ảnh nào được phân tích.
+                            </div>
+                            <div class="px-ph__reference" data-kid="1-3-5-1-2-2-2-3" data-name="pH reference scale and legend">
+                                <div class="px-ph__reference-heading" data-kid="1-3-5-1-2-2-2-3-1" data-name="pH scale heading container">
+                                    <h4 data-kid="1-3-5-1-2-2-2-3-1-1" data-name="pH scale heading">
+                                        Thang màu pH tham khảo
+                                    </h4>
+                                    <span data-kid="1-3-5-1-2-2-2-3-1-2" data-name="pH scale range label">
+                                        1–14
+                                    </span>
+                                </div>
+                                <ol aria-label="Thang màu tham khảo từ pH 1 đến 14" class="px-ph__scale" data-kid="1-3-5-1-2-2-2-3-2" data-name="fourteen-color pH scale">
+                                    <li aria-label="pH 1" data-kid="1-3-5-1-2-2-2-3-2-1" data-name="pH scale item">
+                                        1
+                                    </li>
+                                    <li aria-label="pH 2" data-kid="1-3-5-1-2-2-2-3-2-2" data-name="pH scale item">
+                                        2
+                                    </li>
+                                    <li aria-label="pH 3" data-kid="1-3-5-1-2-2-2-3-2-3" data-name="pH scale item">
+                                        3
+                                    </li>
+                                    <li aria-label="pH 4" data-kid="1-3-5-1-2-2-2-3-2-4" data-name="pH scale item">
+                                        4
+                                    </li>
+                                    <li aria-label="pH 5" data-kid="1-3-5-1-2-2-2-3-2-5" data-name="pH scale item">
+                                        5
+                                    </li>
+                                    <li aria-label="pH 6" data-kid="1-3-5-1-2-2-2-3-2-6" data-name="pH scale item">
+                                        6
+                                    </li>
+                                    <li aria-label="pH 7" data-kid="1-3-5-1-2-2-2-3-2-7" data-name="pH scale item">
+                                        7
+                                    </li>
+                                    <li aria-label="pH 8" data-kid="1-3-5-1-2-2-2-3-2-8" data-name="pH scale item">
+                                        8
+                                    </li>
+                                    <li aria-label="pH 9" data-kid="1-3-5-1-2-2-2-3-2-9" data-name="pH scale item">
+                                        9
+                                    </li>
+                                    <li aria-label="pH 10" data-kid="1-3-5-1-2-2-2-3-2-10" data-name="pH scale item">
+                                        10
+                                    </li>
+                                    <li aria-label="pH 11" data-kid="1-3-5-1-2-2-2-3-2-11" data-name="pH scale item">
+                                        11
+                                    </li>
+                                    <li aria-label="pH 12" data-kid="1-3-5-1-2-2-2-3-2-12" data-name="pH scale item">
+                                        12
+                                    </li>
+                                    <li aria-label="pH 13" data-kid="1-3-5-1-2-2-2-3-2-13" data-name="pH scale item">
+                                        13
+                                    </li>
+                                    <li aria-label="pH 14" data-kid="1-3-5-1-2-2-2-3-2-14" data-name="pH scale item">
+                                        14
+                                    </li>
+                                </ol>
+                                <ul class="px-ph__legend" data-kid="1-3-5-1-2-2-2-3-3" data-name="pH legend list">
+                                    <li data-kid="1-3-5-1-2-2-2-3-3-1" data-name="pH legend item container">
+                                        <strong data-kid="1-3-5-1-2-2-2-3-3-1-1" data-name="pH legend title">
+                                            pH 1–2
+                                        </strong>
+                                        <span data-kid="1-3-5-1-2-2-2-3-3-1-2" data-name="pH legend description">
+                                            Đỏ · anthocyanin bền (flavylium)
+                                        </span>
+                                    </li>
+                                    <li data-kid="1-3-5-1-2-2-2-3-3-2" data-name="pH legend item container">
+                                        <strong data-kid="1-3-5-1-2-2-2-3-3-2-1" data-name="pH legend title">
+                                            pH 3–5
+                                        </strong>
+                                        <span data-kid="1-3-5-1-2-2-2-3-3-2-2" data-name="pH legend description">
+                                            Tím · base quinon, kém bền
+                                        </span>
+                                    </li>
+                                    <li data-kid="1-3-5-1-2-2-2-3-3-3" data-name="pH legend item container">
+                                        <strong data-kid="1-3-5-1-2-2-2-3-3-3-1" data-name="pH legend title">
+                                            pH 6–8
+                                        </strong>
+                                        <span data-kid="1-3-5-1-2-2-2-3-3-3-2" data-name="pH legend description">
+                                            Xanh dương · quinoidal anhydro
+                                        </span>
+                                    </li>
+                                    <li data-kid="1-3-5-1-2-2-2-3-3-4" data-name="pH legend item container">
+                                        <strong data-kid="1-3-5-1-2-2-2-3-3-4-1" data-name="pH legend title">
+                                            pH 9–11
+                                        </strong>
+                                        <span data-kid="1-3-5-1-2-2-2-3-3-4-2" data-name="pH legend description">
+                                            Xanh lá chuyển dần sang vàng
+                                        </span>
+                                    </li>
+                                    <li data-kid="1-3-5-1-2-2-2-3-3-5" data-name="pH legend item container">
+                                        <strong data-kid="1-3-5-1-2-2-2-3-3-5-1" data-name="pH legend title">
+                                            pH 12–14
+                                        </strong>
+                                        <span data-kid="1-3-5-1-2-2-2-3-3-5-2" data-name="pH legend description">
+                                            Vàng · anthocyanin dạng chalcon
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="px-ph__disclaimer" data-kid="1-3-5-1-2-2-2-4" data-name="scientific disclaimer">
+                                <i aria-hidden="true" class="ti ti-info-circle" data-kid="1-3-5-1-2-2-2-4-1" data-name="scientific disclaimer icon">
+                                </i>
+                                <span data-kid="1-3-5-1-2-2-2-4-2" data-name="scientific disclaimer text">
+                                    <strong data-kid="1-3-5-1-2-2-2-4-2-1" data-name="scientific disclaimer label">
+                                        Lưu ý:
+                                    </strong>
+                                    Kết quả chỉ mang tính tham khảo, hỗ trợ ước lượng nhanh; không thay thế máy đo pH chuyên dụng, đặc biệt trong nông nghiệp hoặc nghiên cứu khoa học.
+                                </span>
+                            </p>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            (function(){
+            var root=document.getElementById('ph-scan');if(!root)return;
+            var tabs=Array.from(root.querySelectorAll('[data-scan-tab]')),panels=Array.from(root.querySelectorAll('[data-scan-panel]'));
+            var video=root.querySelector('#ph-video'),cameraWrap=root.querySelector('#ph-camera-wrap'),startButton=root.querySelector('#ph-start-camera'),stopButton=root.querySelector('#ph-stop-camera'),captureButton=root.querySelector('#ph-capture'),fileInput=root.querySelector('#ph-file-input'),canvas=root.querySelector('#ph-scan-canvas'),ctx=canvas.getContext('2d',{willReadFrequently:true}),empty=root.querySelector('#ph-preview-empty'),status=root.querySelector('#ph-scan-status'),result=root.querySelector('#ph-result');
+            var stream=null,requestId=0,pending=false;
+            function setStatus(message,error){status.textContent=message;status.classList.toggle('is-error',Boolean(error));}
+            function resetResult(){canvas.hidden=true;empty.hidden=false;result.textContent='Chưa có ảnh nào được phân tích.';}
+            function stopCamera(){requestId+=1;pending=false;if(stream){stream.getTracks().forEach(function(track){track.stop();});stream=null;}video.srcObject=null;cameraWrap.hidden=true;startButton.hidden=false;startButton.disabled=false;stopButton.hidden=true;captureButton.disabled=true;}
+            function switchTab(mode,focus){tabs.forEach(function(tab){var active=tab.dataset.scanTab===mode;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;if(active&&focus)tab.focus();});panels.forEach(function(panel){panel.hidden=panel.dataset.scanPanel!==mode;});if(mode==='upload'){var running=Boolean(stream),waiting=pending;stopCamera();if(running)setStatus('Camera đã tắt khi chuyển sang tải ảnh.',false);else if(waiting)setStatus('Đã hủy yêu cầu camera khi chuyển sang tải ảnh.',false);}}
+            tabs.forEach(function(tab,index){tab.addEventListener('click',function(){switchTab(tab.dataset.scanTab,false);});tab.addEventListener('keydown',function(event){var next=index;if(event.key==='ArrowRight'||event.key==='ArrowDown')next=(index+1)%tabs.length;else if(event.key==='ArrowLeft'||event.key==='ArrowUp')next=(index-1+tabs.length)%tabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=tabs.length-1;else return;event.preventDefault();switchTab(tabs[next].dataset.scanTab,true);});});
+            function rgbToHsl(r,g,b){r/=255;g/=255;b/=255;var max=Math.max(r,g,b),min=Math.min(r,g,b),l=(max+min)/2,h=0,s=0;if(max!==min){var d=max-min;s=l>.5?d/(2-max-min):d/(max+min);switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;default:h=(r-g)/d+4;}h/=6;}return{h:h*360,s:s*100,l:l*100};}
+            function averageColor(image){var d=image.data,x0=Math.floor(image.width*.3),x1=Math.floor(image.width*.7),y0=Math.floor(image.height*.3),y1=Math.floor(image.height*.7),r=0,g=0,b=0,n=0;for(var y=y0;y<y1;y++)for(var x=x0;x<x1;x++){var i=(y*image.width+x)*4;r+=d[i];g+=d[i+1];b+=d[i+2];n++;}return n?{r:Math.round(r/n),g:Math.round(g/n),b:Math.round(b/n)}:{r:0,g:0,b:0};}
+            function estimate(rgb){var hsl=rgbToHsl(rgb.r,rgb.g,rgb.b),h=hsl.h;if(hsl.l<8||hsl.l>95||hsl.s<8)return{ph:null,label:'Không xác định (ảnh quá tối, quá sáng hoặc nhạt màu)'};if(h>=340||h<15)return{ph:1.5,label:'Đỏ — anthocyanin bền (flavylium)',hsl:hsl};if(h>=320)return{ph:2.5,label:'Hồng đỏ — chuyển tiếp acid',hsl:hsl};if(h>=270)return{ph:h>=300?3.5:h>=285?4.5:5,label:h>=300?'Tím hồng — base quinon':h>=285?'Tím — base quinon':'Tím xanh — base quinon kém bền',hsl:hsl};if(h>=220)return{ph:h>=245?6:7,label:'Xanh dương đậm — quinoidal anhydro',hsl:hsl};if(h>=180)return{ph:8,label:'Xanh ngọc — quinoidal anhydro',hsl:hsl};if(h>=100)return{ph:h>=150?9:h>=125?10:11,label:h>=150?'Xanh lá đậm — chuyển sang vàng':h>=125?'Xanh lá — anthocyanin vàng':'Xanh vàng — chuyển sang chalcon',hsl:hsl};if(h>=50)return{ph:h>=75?12:13,label:'Vàng — anthocyanin dạng chalcon',hsl:hsl};return{ph:14,label:'Vàng cam — chalcon đậm',hsl:hsl};}
+            function soil(ph){if(ph<4.5)return{type:'Đất rất chua',tone:'#a4483c',advice:'Đất pH dưới 4,5 có thể hạn chế rễ và làm giảm khả năng hấp thu lân, canxi, magiê. Có thể bón vôi theo kết quả kiểm tra đất; cây ưa acid như trà, cà phê, thông có thể phù hợp hơn, còn đa số cây trồng dễ kém phát triển.'};if(ph<5.5)return{type:'Đất chua',tone:'#a86636',advice:'Đất chua thường phù hợp với cây ưa acid nhẹ như khoai tây, dứa, dưa hấu. Nếu trồng rau ăn lá, cân nhắc bón vôi nhẹ theo hướng dẫn và theo dõi pH trước khi điều chỉnh.'};if(ph<6.5)return{type:'Đất chua nhẹ',tone:'#95733d',advice:'Khoảng pH này khá phù hợp với nhiều cây như lúa, ngô, rau màu và cây ăn quả. Tiếp tục theo dõi đất và duy trì độ pH ổn định.'};if(ph<=7.5)return{type:'Đất trung tính',tone:'#3f7650',advice:'Đất trung tính thường thuận lợi cho nhiều loại cây; nhiều dưỡng chất dễ ở dạng cây có thể hấp thu. Duy trì tưới tiêu và bón phân cân đối.'};if(ph<=8.5)return{type:'Đất kiềm nhẹ',tone:'#477d83',advice:'Một số cây chịu kiềm có thể sinh trưởng được, nhưng cây nhạy cảm dễ giảm hấp thu sắt và vi lượng. Bổ sung chất hữu cơ, theo dõi cây và kiểm tra lại pH trước khi xử lý.'};return{type:'Đất kiềm',tone:'#ff9a16',modifier:'alkaline',advice:'Cây trồng khó hấp thu sắt, kẽm, mangan. Nên bón phân chua sinh lý (SA, KCl) hoặc lưu huỳnh để hạ pH.'};}
+            function line(parent,cls,text){var p=document.createElement('p');if(cls)p.className=cls;p.textContent=text;parent.appendChild(p);return p;}
+            function analyze(){try{var rgb=averageColor(ctx.getImageData(0,0,canvas.width,canvas.height)),hex='#'+[rgb.r,rgb.g,rgb.b].map(function(v){return v.toString(16).padStart(2,'0');}).join(''),guess=estimate(rgb);result.replaceChildren();var colorLine=line(result,'px-ph__color-line','Màu trung bình');var swatch=document.createElement('span');swatch.className='px-ph__swatch';swatch.setAttribute('aria-label','Mẫu màu '+hex);swatch.style.setProperty('--sample-color','rgb('+rgb.r+' '+rgb.g+' '+rgb.b+')');colorLine.append(swatch,document.createTextNode(hex));if(guess.ph===null){line(result,'px-ph__result-note','Không thể ước lượng pH: '+guess.label+'. Hãy thử ảnh rõ màu và đủ sáng hơn.');return;}line(result,'','RGB('+rgb.r+', '+rgb.g+', '+rgb.b+') · HSL('+guess.hsl.h.toFixed(0)+'°, '+guess.hsl.s.toFixed(0)+'%, '+guess.hsl.l.toFixed(0)+'%)');line(result,'px-ph__estimate','pH ước lượng: ~'+guess.ph);line(result,'px-ph__pigment',guess.label);var verdict=soil(guess.ph),box=document.createElement('div');box.className='px-ph__soil';if(verdict.modifier)box.classList.add('px-ph__soil--'+verdict.modifier);box.style.setProperty('--soil-tone',verdict.tone);var heading=line(box,'px-ph__soil-title','Kết luận về đất'),icon=document.createElement('i');icon.className='ti ti-seedling';icon.setAttribute('aria-hidden','true');heading.prepend(icon);line(box,'px-ph__soil-name',verdict.type);line(box,'px-ph__soil-advice',verdict.advice);result.appendChild(box);}catch(error){setStatus('Không thể đọc ảnh để phân tích màu. Hãy thử một ảnh khác.',true);}}
+            function showImage(img){var ratio=Math.min(1,600/img.width,600/img.height);canvas.width=Math.max(1,Math.round(img.width*ratio));canvas.height=Math.max(1,Math.round(img.height*ratio));ctx.drawImage(img,0,0,canvas.width,canvas.height);canvas.hidden=false;empty.hidden=true;analyze();}
+            function capture(){if(!stream||!video.videoWidth){setStatus('Camera chưa sẵn sàng. Vui lòng đợi hình ảnh xuất hiện rồi thử lại.',true);return;}var w=video.videoWidth,h=video.videoHeight,source=document.createElement('canvas');source.width=w;source.height=h;var sc=source.getContext('2d');if(!sc){setStatus('Không thể khởi tạo vùng xử lý ảnh trên thiết bị này.',true);return;}sc.save();sc.translate(w,0);sc.scale(-1,1);sc.drawImage(video,0,0,w,h);sc.restore();var side=Math.min(w,h),size=Math.round(side*Math.min(1,600/side));canvas.width=size;canvas.height=size;ctx.drawImage(source,(w-side)/2,(h-side)/2,side,side,0,0,size,size);canvas.hidden=false;empty.hidden=true;analyze();setStatus('Đã chụp ảnh và phân tích vùng màu ở trung tâm.',false);}
+            async function startCamera(){if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){setStatus('Trình duyệt không hỗ trợ camera. Hãy dùng HTTPS hoặc localhost, hoặc chuyển sang tải ảnh.',true);return;}var id=requestId+1;requestId=id;pending=true;startButton.disabled=true;setStatus('Đang kết nối camera…',false);try{var requested=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}},audio:false});if(id!==requestId){requested.getTracks().forEach(function(track){track.stop();});return;}stream=requested;video.srcObject=stream;cameraWrap.hidden=false;startButton.hidden=true;stopButton.hidden=false;await video.play();if(id!==requestId)return;captureButton.disabled=video.videoWidth===0;setStatus(captureButton.disabled?'Đang khởi tạo camera…':'Camera đã bật. Đặt dung dịch vào giữa vòng tròn rồi chụp ảnh.',false);if(captureButton.disabled)video.addEventListener('loadedmetadata',function ready(){video.removeEventListener('loadedmetadata',ready);if(id!==requestId)return;captureButton.disabled=false;setStatus('Camera đã sẵn sàng. Đặt dung dịch vào giữa vòng tròn rồi chụp ảnh.',false);});}catch(error){if(id!==requestId)return;stopCamera();var message='Không thể truy cập camera. Vui lòng thử lại hoặc tải ảnh lên.';if(error.name==='NotAllowedError'||error.name==='PermissionDeniedError')message='Bạn đã từ chối quyền truy cập camera. Hãy cấp quyền hoặc tải ảnh lên.';else if(error.name==='NotFoundError'||error.name==='DevicesNotFoundError')message='Không tìm thấy camera trên thiết bị. Bạn vẫn có thể tải ảnh lên.';else if(error.name==='NotReadableError'||error.name==='TrackStartError')message='Camera đang được ứng dụng khác sử dụng. Hãy đóng ứng dụng đó rồi thử lại.';setStatus(message,true);}finally{if(id===requestId){pending=false;startButton.disabled=false;}}}
+            startButton.addEventListener('click',startCamera);stopButton.addEventListener('click',function(){stopCamera();setStatus('Camera đã tắt.',false);});captureButton.addEventListener('click',capture);
+            fileInput.addEventListener('change',function(event){var file=event.target.files&&event.target.files[0];if(!file)return;resetResult();if(!file.type||file.type.indexOf('image/')!==0){setStatus('Vui lòng chọn một tệp ảnh hợp lệ.',true);fileInput.value='';return;}var reader=new FileReader();reader.onload=function(e){var image=new Image();image.onload=function(){showImage(image);setStatus('Ảnh đã được tải lên và phân tích trên thiết bị.',false);};image.onerror=function(){setStatus('Không thể tải ảnh. Vui lòng thử ảnh khác.',true);resetResult();};image.src=e.target.result;};reader.onerror=function(){setStatus('Lỗi đọc tệp. Vui lòng chọn lại ảnh.',true);resetResult();};reader.readAsDataURL(file);fileInput.value='';});
+            window.addEventListener('beforeunload',stopCamera);if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)switchTab('upload',false);
+        })();
+        </script>
+        <!-- 8. Chatbot placeholder only; deliberately no chat interface. -->
+        <section aria-labelledby="chatbot-heading" class="bg-[#faf8f4] px-5 pb-16 pt-8 md:px-8 md:pb-24" data-kid="1-3-6" data-name="chatbot placeholder section">
+            <div class="mx-auto max-w-[1240px]" data-kid="1-3-6-1" data-name="chatbot content wrapper">
+                <h2 class="px-display mb-5 text-4xl sm:text-5xl" data-kid="1-3-6-1-1" data-name="chatbot headline" id="chatbot-heading">
+                    Hỏi đáp về phân bón & môi trường
+                </h2>
+                <div class="w-full bg-white p-4 rounded-xl shadow-sm overflow-hidden" data-kid="1-3-6-1-2" data-name="placeholder area">
+    <!-- Dán trực tiếp đoạn code Typebot của bạn vào đây -->
+    <script type="module">
+      import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js';
+      Typebot.initStandard({ typebot: "my-typebot-28c83kr" });
+    </script>
+    <typebot-standard style="width: 100%; height: 600px; display: block;"></typebot-standard>
+</div>
+            </div>
+        </section>
+        <!-- 9. Reviews, structured for future Supabase integration. -->
+        <section class="px-paper bg-[#e7f0e5] px-5 py-16 md:py-24 lg:px-8" data-kid="1-3-7" data-name="reviews section" id="danh-gia">
+            <div class="mx-auto max-w-[1120px]" data-kid="1-3-7-1" data-name="reviews container">
+                <div class="grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:gap-14" data-kid="1-3-7-1-1" data-name="reviews grid">
+                    <div data-kid="1-3-7-1-1-1" data-name="reviews text content">
+                        <h2 class="px-display text-5xl leading-tight sm:text-6xl" data-kid="1-3-7-1-1-1-1" data-name="reviews headline">
+                            Chia sẻ góc nhìn của bạn.
+                        </h2>
+                        <p class="mt-4 max-w-sm text-sm leading-7 text-[#5e6b60]" data-kid="1-3-7-1-1-1-2" data-name="reviews subtext">
+                            Mỗi nhận xét giúp nhóm biết phần nào dễ hiểu, phần nào cần kiểm tra thêm trong hành trình nghiên cứu.
+                        </p>
+                        <div class="mt-6 flex items-center gap-2 text-sm text-[#72513b]" data-kid="1-3-7-1-1-1-3" data-name="helper text">
+                            <i aria-hidden="true" class="ti ti-message-circle-2 text-xl" data-kid="1-3-7-1-1-1-3-1" data-name="message icon">
+                            </i>
+                            Ý kiến của bạn sẽ giúp dự án học hỏi tốt hơn.
+                        </div>
+                    </div>
+                    <div data-kid="1-3-7-1-1-2" data-name="reviews input/list container">
+                        <form class="border border-[#d9ded3] bg-[#fffefa] p-5 sm:p-7" data-kid="1-3-7-1-1-2-1" data-name="review submission form" id="review-form">
+                            <div class="grid gap-5 sm:grid-cols-2" data-kid="1-3-7-1-1-2-1-1" data-name="input grid">
+                                <label class="text-sm font-semibold" data-kid="1-3-7-1-1-2-1-1-1" data-name="name input label" for="review-name">
+                                    Tên (hoặc để ẩn danh)
+                                    <input autocomplete="name" class="px-line-input mt-2 w-full border-0 border-b border-[#b9c5b7] bg-transparent px-1 py-3 text-sm" data-kid="1-3-7-1-1-2-1-1-1-1" data-name="name input field" id="review-name" name="name" placeholder="Tên của bạn hoặc Ẩn danh" type="text"/>
+                                </label>
+                                <label class="text-sm font-semibold" data-kid="1-3-7-1-1-2-1-1-2" data-name="rating select label" for="review-rating">
+                                    Đánh giá
+                                    <select class="px-line-input mt-2 w-full border-0 border-b border-[#b9c5b7] bg-transparent px-1 py-3 text-sm" data-kid="1-3-7-1-1-2-1-1-2-1" data-name="rating select field" id="review-rating" name="rating" required="">
+                                        <option data-kid="1-3-7-1-1-2-1-1-2-1-1" data-name="option 1" value="5">
+                                            5 sao — Rất hữu ích
+                                        </option>
+                                        <option data-kid="1-3-7-1-1-2-1-1-2-1-2" data-name="option 2" value="4">
+                                            4 sao — Hữu ích
+                                        </option>
+                                        <option data-kid="1-3-7-1-1-2-1-1-2-1-3" data-name="option 3" value="3">
+                                            3 sao — Bình thường
+                                        </option>
+                                        <option data-kid="1-3-7-1-1-2-1-1-2-1-4" data-name="option 4" value="2">
+                                            2 sao — Cần cải thiện
+                                        </option>
+                                        <option data-kid="1-3-7-1-1-2-1-1-2-1-5" data-name="option 5" value="1">
+                                            1 sao — Chưa phù hợp
+                                        </option>
+                                    </select>
+                                </label>
+                                <label class="text-sm font-semibold sm:col-span-2" data-kid="1-3-7-1-1-2-1-1-3" data-name="comment textarea label" for="review-comment">
+                                    Nhận xét
+                                    <textarea class="px-line-input mt-2 w-full resize-y border-0 border-b border-[#b9c5b7] bg-transparent px-1 py-3 text-sm" data-kid="1-3-7-1-1-2-1-1-3-1" data-name="comment textarea field" id="review-comment" name="comment" placeholder="Bạn muốn chia sẻ điều gì về dự án?" required="" rows="3"></textarea>
+                                </label>
+                            </div>
+                            <div class="mt-5 flex flex-wrap items-center justify-between gap-4" data-kid="1-3-7-1-1-2-1-2" data-name="form footer">
+                                <p class="text-xs leading-5 text-[#788278]" data-kid="1-3-7-1-1-2-1-2-1" data-name="warning text">
+                                    Biểu mẫu hiện là bản xem trước, chưa lưu nhận xét lên hệ thống.
+                                </p>
+                                <button class="rounded-md bg-[#2f6f4e] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1f4d3a]" data-kid="1-3-7-1-1-2-1-2-2" data-name="submit button" type="submit">
+                                    Gửi nhận xét
+                                </button>
+                            </div>
+                        </form>
+                        <div class="mt-8" data-kid="1-3-7-1-1-2-2" data-name="comments list container">
+                            <h3 class="px-display mb-3 text-2xl" data-kid="1-3-7-1-1-2-2-1" data-name="comments headline">
+                                Ý kiến đã chia sẻ
+                            </h3>
+                            <div aria-live="polite" class="divide-y divide-[#c8d6c6] border-y border-[#c8d6c6]" data-dynamic="true" data-kid="1-3-7-1-1-2-2-2" data-name="comments list" data-reason="new DOM elements prepended by script" id="supabase-comments-container">
+                                <article class="flex gap-4 py-5" data-kid="1-3-7-1-1-2-2-2-1" data-name="comment article">
+                                    <span class="flex size-9 shrink-0 items-center justify-center rounded-full border border-[#c4d3c1] bg-[#f8faf5] text-[#527653]" data-kid="1-3-7-1-1-2-2-2-1-1" data-name="avatar">
+                                        <i aria-hidden="true" class="ti ti-user" data-kid="1-3-7-1-1-2-2-2-1-1-1" data-name="user icon">
+                                        </i>
+                                    </span>
+                                    <div data-kid="1-3-7-1-1-2-2-2-1-2" data-name="comment body">
+                                        <div class="flex flex-wrap items-center gap-x-3 gap-y-1" data-kid="1-3-7-1-1-2-2-2-1-2-1" data-name="comment header">
+                                            <h4 class="text-sm font-semibold" data-kid="1-3-7-1-1-2-2-2-1-2-1-1" data-name="user name">
+                                                Minh Anh
+                                            </h4>
+                                            <span aria-label="5 trên 5 sao" class="text-xs tracking-wide text-[#8c6b39]" data-kid="1-3-7-1-1-2-2-2-1-2-1-2" data-name="rating stars">
+                                                ★★★★★
+                                            </span>
+                                        </div>
+                                        <p class="mt-2 text-sm leading-6 text-[#5e695f]" data-kid="1-3-7-1-1-2-2-2-1-2-2" data-name="comment text">
+                                            Mình thích nhất là được thấy từng bước biến rau củ thừa thành thứ có ích cho đất. Phần viên đổi màu rất thú vị.
+                                        </p>
+                                    </div>
+                                </article>
+                                <article class="flex gap-4 py-5" data-kid="1-3-7-1-1-2-2-2-2" data-name="comment article">
+                                    <span class="flex size-9 shrink-0 items-center justify-center rounded-full border border-[#c4d3c1] bg-[#f8faf5] text-[#527653]" data-kid="1-3-7-1-1-2-2-2-2-1" data-name="avatar">
+                                        <i aria-hidden="true" class="ti ti-user" data-kid="1-3-7-1-1-2-2-2-2-1-1" data-name="user icon">
+                                        </i>
+                                    </span>
+                                    <div data-kid="1-3-7-1-1-2-2-2-2-2" data-name="comment body">
+                                        <div class="flex flex-wrap items-center gap-x-3 gap-y-1" data-kid="1-3-7-1-1-2-2-2-2-2-1" data-name="comment header">
+                                            <h4 class="text-sm font-semibold" data-kid="1-3-7-1-1-2-2-2-2-2-1-1" data-name="user name">
+                                                Một bạn yêu làm vườn
+                                            </h4>
+                                            <span aria-label="4 trên 5 sao" class="text-xs tracking-wide text-[#8c6b39]" data-kid="1-3-7-1-1-2-2-2-2-2-1-2" data-name="rating stars">
+                                                ★★★★☆
+                                            </span>
+                                        </div>
+                                        <p class="mt-2 text-sm leading-6 text-[#5e695f]" data-kid="1-3-7-1-1-2-2-2-2-2-2" data-name="comment text">
+                                            Mô phỏng giúp mình hiểu thêm về việc loại đất và thời tiết cũng ảnh hưởng đến cây.
+                                        </p>
+                                    </div>
+                                </article>
+                                <article class="flex gap-4 py-5" data-kid="1-3-7-1-1-2-2-2-3" data-name="comment article">
+                                    <span class="flex size-9 shrink-0 items-center justify-center rounded-full border border-[#c4d3c1] bg-[#f8faf5] text-[#527653]" data-kid="1-3-7-1-1-2-2-2-3-1" data-name="avatar">
+                                        <i aria-hidden="true" class="ti ti-user" data-kid="1-3-7-1-1-2-2-2-3-1-1" data-name="user icon">
+                                        </i>
+                                    </span>
+                                    <div data-kid="1-3-7-1-1-2-2-2-3-2" data-name="comment body">
+                                        <div class="flex flex-wrap items-center gap-x-3 gap-y-1" data-kid="1-3-7-1-1-2-2-2-3-2-1" data-name="comment header">
+                                            <h4 class="text-sm font-semibold" data-kid="1-3-7-1-1-2-2-2-3-2-1-1" data-name="user name">
+                                                Thầy hướng dẫn
+                                            </h4>
+                                            <span aria-label="5 trên 5 sao" class="text-xs tracking-wide text-[#8c6b39]" data-kid="1-3-7-1-1-2-2-2-3-2-1-2" data-name="rating stars">
+                                                ★★★★★
+                                            </span>
+                                        </div>
+                                        <p class="mt-2 text-sm leading-6 text-[#5e695f]" data-kid="1-3-7-1-1-2-2-2-3-2-2" data-name="comment text">
+                                            Một đề tài gần gũi với đời sống. Cần tiếp tục đối chiếu kết quả bằng các phép thử dinh dưỡng và độ acid.
+                                        </p>
+                                    </div>
+                                </article>
+                            </div>
+                            <p class="mt-3 text-xs text-[#788278]" data-kid="1-3-7-1-1-2-2-3" data-name="footer text">
+                                Danh sách này được chuẩn bị để kết nối Supabase trong giai đoạn phát triển tiếp theo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 10. Student team and three-field contact form. -->
+        <section class="bg-[#faf8f4] px-5 py-16 md:py-24 lg:px-8" data-kid="1-3-8" data-name="contact section" id="lien-he">
+            <div class="mx-auto grid max-w-[1120px] items-center gap-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-16" data-kid="1-3-8-1" data-name="contact content grid">
+                <div data-kid="1-3-8-1-1" data-name="author contact information">
+                    <h2 class="px-display max-w-lg text-5xl leading-tight sm:text-6xl" data-kid="1-3-8-1-1-1" data-name="contact headline" id="contact-title">
+                        Liên hệ nhóm tác giả
+                    </h2>
+                    <p class="mt-5 max-w-lg text-sm leading-7 text-[#5c695e]" data-kid="1-3-8-1-1-2" data-name="contact introduction">
+                        Phân Xanh là dự án của nhóm học sinh Trường THPT Nguyễn Quang Diêu, cùng tìm hiểu cách tận dụng phụ phẩm hữu cơ và chia sẻ hành trình nghiên cứu.
+                    </p>
+                    <dl class="mt-6 grid grid-cols-2 gap-x-4 border-t border-[#d9ded3] text-sm" data-kid="1-3-8-1-1-3" data-name="author contact details">
+                        <div class="col-span-2 border-b border-[#d9ded3] py-3" data-kid="1-3-8-1-1-3-1" data-name="author team names">
+                            <dt class="text-xs font-semibold text-[#72513b]" data-kid="1-3-8-1-1-3-1-1" data-name="author team label">
+                                Nhóm thực hiện
+                            </dt>
+                            <dd class="mt-1 leading-6" data-kid="1-3-8-1-1-3-1-2" data-name="author team names list">
+                                Trần Thanh Phú
+                                <br data-kid="1-3-8-1-1-3-1-2-1" data-name="line break"/>
+                                Hà Thị Quỳnh Như
+                                <br data-kid="1-3-8-1-1-3-1-2-2" data-name="line break"/>
+                                Nguyễn Trần Thiện
+                            </dd>
+                        </div>
+                        <div class="border-b border-[#d9ded3] py-3" data-kid="1-3-8-1-1-3-2" data-name="school name">
+                            <dt class="text-xs font-semibold text-[#72513b]" data-kid="1-3-8-1-1-3-2-1" data-name="school name label">
+                                Trường
+                            </dt>
+                            <dd class="mt-1" data-kid="1-3-8-1-1-3-2-2" data-name="school name text">
+                                THPT Nguyễn Quang Diêu
+                            </dd>
+                        </div>
+                        <div class="border-b border-[#d9ded3] py-3" data-kid="1-3-8-1-1-3-3" data-name="author email">
+                            <dt class="text-xs font-semibold text-[#72513b]" data-kid="1-3-8-1-1-3-3-1" data-name="author email label">
+                                Email
+                            </dt>
+                            <dd class="mt-1 break-all" data-kid="1-3-8-1-1-3-3-2" data-name="author email address">
+                                <a class="underline decoration-[#a8b8a5] underline-offset-4 hover:text-[#2f6f4e]" data-kid="1-3-8-1-1-3-3-2-1" data-name="author email link" href="mailto:quynhhhu28082034@gmail.com">
+                                    quynhhhu28082034@gmail.com
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="border-b border-[#d9ded3] py-3" data-kid="1-3-8-1-1-3-4" data-name="author phone">
+                            <dt class="text-xs font-semibold text-[#72513b]" data-kid="1-3-8-1-1-3-4-1" data-name="author phone label">
+                                Số điện thoại
+                            </dt>
+                            <dd class="mt-1" data-kid="1-3-8-1-1-3-4-2" data-name="author phone number">
+                                <a class="underline decoration-[#a8b8a5] underline-offset-4 hover:text-[#2f6f4e]" data-kid="1-3-8-1-1-3-4-2-1" data-name="author phone link" href="tel:0352999630">
+                                    0352999630
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="col-span-2 border-b border-[#d9ded3] py-3" data-kid="1-3-8-1-1-3-5" data-name="school address">
+                            <dt class="text-xs font-semibold text-[#72513b]" data-kid="1-3-8-1-1-3-5-1" data-name="school address label">
+                                Địa chỉ đơn vị
+                            </dt>
+                            <dd class="mt-1" data-kid="1-3-8-1-1-3-5-2" data-name="school address text">
+                                Ấp Tân An, xã Tân Châu, tỉnh An Giang
+                            </dd>
+                        </div>
+                    </dl>
+                    <div class="mt-7 overflow-hidden border-[7px] border-white shadow-sm" data-kid="1-3-8-1-1-4" data-name="student research image frame">
+                        <img alt="Học sinh cùng ghi chép và trao đổi khi làm việc ngoài trời" class="h-64 w-full object-cover object-center sm:h-80" data-kid="1-3-8-1-1-4-1" data-name="student research image" decoding="async" loading="lazy" src="https://images.pexels.com/photos/5537940/pexels-photo-5537940.jpeg?auto=compress&cs=tinysrgb&w=1000&q=80"/>
+                    </div>
+                    <p class="mt-2 text-xs text-[#81877e]" data-kid="1-3-8-1-1-5" data-name="image caption">
+                        Cùng quan sát, ghi chép và thử nghiệm là một phần của nghiên cứu.
+                    </p>
+                </div>
+                <form class="border border-[#e2dfd5] bg-white px-5 py-6 sm:px-8 sm:py-8" data-kid="1-3-8-1-2" data-name="contact form" id="contact-form">
+                    <h3 class="px-display text-3xl" data-kid="1-3-8-1-2-1" data-name="form title">
+                        Kết nối với nhóm
+                    </h3>
+                    <p class="mt-2 text-sm leading-6 text-[#69746a]" data-kid="1-3-8-1-2-2" data-name="form description">
+                        Gửi câu hỏi, góp ý hoặc chia sẻ trải nghiệm của bạn.
+                    </p>
+                    <div class="mt-5 grid gap-4" data-kid="1-3-8-1-2-3" data-name="form inputs">
+                        <label class="text-sm font-semibold" data-kid="1-3-8-1-2-3-1" data-name="name field label" for="contact-name">
+                            Họ và tên
+                            <input autocomplete="name" class="px-line-input mt-1 w-full border-0 border-b border-[#cbd4c8] px-1 py-3 text-sm" data-kid="1-3-8-1-2-3-1-1" data-name="name input" id="contact-name" name="name" placeholder="Nguyễn An" required="" type="text"/>
+                        </label>
+                        <label class="text-sm font-semibold" data-kid="1-3-8-1-2-3-2" data-name="contact field label" for="contact-address">
+                            Email hoặc số điện thoại
+                            <input autocomplete="email" class="px-line-input mt-1 w-full border-0 border-b border-[#cbd4c8] px-1 py-3 text-sm" data-kid="1-3-8-1-2-3-2-1" data-name="contact input" id="contact-address" name="contact" placeholder="email@example.com hoặc số điện thoại" required="" type="text"/>
+                        </label>
+                        <label class="text-sm font-semibold" data-kid="1-3-8-1-2-3-3" data-name="message field label" for="contact-message">
+                            Lời nhắn
+                            <textarea class="px-line-input mt-1 w-full resize-y border-0 border-b border-[#cbd4c8] px-1 py-3 text-sm" data-kid="1-3-8-1-2-3-3-1" data-name="message textarea" id="contact-message" name="message" placeholder="Bạn muốn trao đổi điều gì?" required="" rows="4"></textarea>
+                        </label>
+                    </div>
+                    <button class="mt-6 inline-flex items-center gap-2 rounded-md bg-[#2f6f4e] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1f4d3a]" data-kid="1-3-8-1-2-4" data-name="submit button" type="submit">
+                        Gửi lời nhắn
+                        <i aria-hidden="true" class="ti ti-arrow-right" data-kid="1-3-8-1-2-4-1" data-name="arrow icon">
+                        </i>
+                    </button>
+                    <p class="mt-3 hidden text-sm text-[#2f6f4e]" data-dynamic="true" data-kid="1-3-8-1-2-5" data-name="thank you message" data-reason="visibility toggled by script" id="contact-note" role="status">
+                        Cảm ơn bạn đã gửi lời nhắn. Đây là bản xem trước của biểu mẫu; hiện chưa có chức năng gửi thư.
+                    </p>
+                </form>
+            </div>
+        </section>
+    </main>
+    <!-- 11. Footer -->
+    <footer class="bg-[#1f4d3a] px-5 py-10 text-[#f7f5eb] md:px-8 md:py-12" data-kid="1-4" data-name="footer section">
+        <div class="mx-auto max-w-[1240px]" data-kid="1-4-1" data-name="footer content container">
+            <div class="grid gap-8 md:grid-cols-[1.2fr_.8fr] md:items-start" data-kid="1-4-1-1" data-name="footer grid">
+                <div data-kid="1-4-1-1-1" data-name="footer logo info">
+                    <a class="inline-flex items-center gap-2" data-kid="1-4-1-1-1-1" data-name="logo link" href="#trang-chu">
+                        <span class="flex size-9 items-center justify-center rounded-full border border-white/30 bg-white/10 text-lg" data-kid="1-4-1-1-1-1-1" data-name="icon wrapper">
+                            <i aria-hidden="true" class="ti ti-seedling" data-kid="1-4-1-1-1-1-1-1" data-name="seedling icon">
+                            </i>
+                        </span>
+                        <span class="px-display text-2xl font-semibold" data-kid="1-4-1-1-1-1-2" data-name="site name">
+                            Phân Xanh
+                        </span>
+                    </a>
+                    <p class="mt-3 max-w-md text-sm leading-6 text-white/75" data-kid="1-4-1-1-1-2" data-name="footer description">
+                        Tìm hiểu khoa học từ những điều gần gũi.
+                    </p>
+                </div>
+                <nav aria-label="Liên kết cuối trang" class="flex flex-wrap gap-x-5 gap-y-3 text-sm text-white/85" data-kid="1-4-1-1-2" data-name="footer navigation">
+                    <a class="hover:text-white" data-kid="1-4-1-1-2-1" data-name="footer nav link" href="#cau-chuyen">
+                        Câu chuyện
+                    </a>
+                    <a class="hover:text-white" data-kid="1-4-1-1-2-2" data-name="footer nav link" href="#san-pham">
+                        Sản phẩm
+                    </a>
+                    <a class="hover:text-white" data-kid="1-4-1-1-2-3" data-name="footer nav link" href="#thi-nghiem">
+                        Thí nghiệm ảo
+                    </a>
+                    <a class="hover:text-white" data-kid="1-4-1-1-2-4" data-name="footer nav link" href="#danh-gia">
+                        Đánh giá
+                    </a>
+                    <a class="hover:text-white" data-kid="1-4-1-1-2-5" data-name="footer nav link" href="#lien-he">
+                        Liên hệ
+                    </a>
+                </nav>
+            </div>
+            <div class="mt-8 border-t border-white/20 pt-5" data-kid="1-4-1-2" data-name="footer copyright block">
+                <p class="text-xs leading-6 text-white/70 sm:text-sm" data-kid="1-4-1-2-1" data-name="disclaimer text">
+                    Website phục vụ mục đích nghiên cứu và giáo dục.
+                </p>
+                <p class="mt-3 text-xs text-white/50" data-kid="1-4-1-2-2" data-name="copyright text">
+                    © Phân Xanh · Dự án Khoa học kỹ thuật học sinh THPT
+                </p>
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+    (function () {
+  const intro = document.getElementById('px-intro');
+  const skipIntro = document.getElementById('px-skip-intro');
+  if (skipIntro && intro) skipIntro.addEventListener('click', function () { intro.classList.add('is-skipped'); });
+
+  // Data for the selected-product notebook panel.
+  const productCopy = {
+    base: { title: 'Phân hữu cơ gốc', summary: 'Hỗn hợp hữu cơ nền được tạo sau quá trình xử lý và ủ các phụ phẩm phù hợp.', made: 'Thu gom và ủ nguyên liệu hữu cơ; phối trộn vi sinh vật có lợi rồi tiếp tục theo dõi quá trình ủ.', use: 'Trộn một lượng phù hợp vào đất hoặc giá thể trước khi trồng; điều chỉnh theo loại cây.', note: 'Chất lượng và lượng sử dụng cần được đánh giá bằng thử nghiệm và kiểm nghiệm dinh dưỡng.' },
+    pellet: { title: 'Viên nén', summary: 'Phân hữu cơ nền được tạo thành viên nén để dễ cầm, bảo quản và đặt gần vùng rễ.', made: 'Làm khô hỗn hợp phân hữu cơ phù hợp rồi ép thành viên nén.', use: 'Đặt viên gần vùng rễ, tưới vừa đủ và quan sát cây trong quá trình chăm sóc.', note: 'Thời gian tan và lượng sử dụng có thể khác nhau tùy độ ẩm, đất và loại cây.' },
+    indicator: { title: 'Viên tan chậm có chỉ thị màu', summary: 'Từ nền phân hữu cơ đã ủ, viên được nén để tan chậm và có lớp chỉ thị màu chiết xuất từ hoa đậu biếc — điểm nghiên cứu đặc biệt của nhóm.', made: 'Ép nền phân hữu cơ thành viên tan chậm, sau đó phủ lớp chỉ thị màu từ hoa đậu biếc.', use: 'Đặt viên gần vùng rễ và tưới nước theo nhu cầu của cây; quan sát màu như một gợi ý cần kiểm chứng.', note: 'Màu sắc chỉ hỗ trợ quan sát, không thay thế phép đo chuyên dụng. Liều dùng cần được thử nghiệm theo từng loại cây.' },
+    liquid: { title: 'Dạng lỏng / dung dịch', summary: 'Một hướng phát triển từ nền hữu cơ để tìm hiểu khả năng sử dụng ở dạng dung dịch.', made: 'Chiết hoặc hòa phần hữu cơ đã xử lý trong nước theo quy trình thử nghiệm của nhóm.', use: 'Pha loãng theo hướng dẫn sau khi có dữ liệu thử nghiệm; dùng lượng nhỏ trước để quan sát.', note: 'Nồng độ và độ ổn định cần được xác định trước khi khuyến nghị sử dụng.' },
+    powder: { title: 'Dạng bột', summary: 'Dạng hữu cơ khô, tơi, có thể phối trộn với đất hoặc giá thể.', made: 'Làm khô vật liệu hữu cơ đã ủ rồi nghiền và sàng thành bột.', use: 'Trộn đều với đất hoặc giá thể trước khi gieo trồng; tránh dùng quá nhiều một lần.', note: 'Cần bảo quản khô ráo và kiểm nghiệm chất lượng trước khi đưa ra hướng dẫn cụ thể.' }
+  };
+  const productButtons = document.querySelectorAll('.px-product');
+  productButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      const item = productCopy[button.dataset.product];
+      if (!item) return;
+      productButtons.forEach(function (other) { other.setAttribute('aria-pressed', String(other === button)); });
+      document.getElementById('product-title').textContent = item.title;
+      document.getElementById('product-summary').textContent = item.summary;
+      document.getElementById('product-made').textContent = item.made;
+      document.getElementById('product-use').textContent = item.use;
+      document.getElementById('product-note').textContent = item.note;
+    });
+  });
+
+  // A deliberately simplified learning model, not a prediction of real crop performance.
+  const labForm = document.getElementById('lab-form');
+  if (labForm) labForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const plant = document.getElementById('lab-plant').value;
+    const stage = document.getElementById('lab-stage').value;
+    const soil = document.getElementById('lab-soil').value;
+    const fertilizer = document.getElementById('lab-fertilizer').value;
+    const weather = document.getElementById('lab-weather').value;
+    let score = 72;
+    if (soil === 'Đất phù sa' || soil === 'Đất trồng chậu') score += 7;
+    if (soil === 'Đất cát') score -= 8;
+    if (weather === 'Nắng nhẹ') score += 5;
+    if (weather === 'Mưa thường xuyên' || weather === 'Nắng nóng') score -= 9;
+    if (fertilizer.indexOf('Viên') === 0) score += 3;
+    if (stage === 'Cây con') score -= 2;
+    score = Math.max(38, Math.min(91, score));
+    const growth = score;
+    const moisture = weather === 'Nắng nóng' ? Math.max(36, score - 16) : weather === 'Mưa thường xuyên' ? Math.min(92, score + 12) : Math.max(45, score - 7);
+    const nutrition = fertilizer === 'Phân hữu cơ gốc' ? Math.min(90, score + 3) : Math.max(42, score - 2);
+    const state = score >= 76 ? 'Cây đang phát triển khỏe' : score >= 59 ? 'Cây đang phát triển ổn định' : 'Cây cần điều kiện phù hợp hơn';
+    const stateTag = score >= 76 ? 'Khả quan' : score >= 59 ? 'Ổn định' : 'Cần lưu ý';
+    document.getElementById('lab-state').textContent = state;
+    document.getElementById('lab-state-chip').textContent = stateTag;
+    document.getElementById('growth-value').textContent = growth + '%';
+    document.getElementById('moisture-value').textContent = moisture + '%';
+    document.getElementById('nutrition-value').textContent = nutrition + '%';
+    document.getElementById('growth-bar').style.width = growth + '%';
+    document.getElementById('moisture-bar').style.width = moisture + '%';
+    document.getElementById('nutrition-bar').style.width = nutrition + '%';
+    document.getElementById('lab-tip').textContent = weather === 'Mưa thường xuyên' ? 'Mẹo: Với ' + plant + ' ở giai đoạn ' + stage.toLowerCase() + ', mưa kéo dài có thể làm đất quá ẩm; hãy quan sát khả năng thoát nước.' : soil === 'Đất cát' ? 'Mẹo: Đất cát thoát nước nhanh; bổ sung chất hữu cơ có thể giúp đất giữ ẩm tốt hơn.' : 'Mẹo: Với ' + plant + ' ở giai đoạn ' + stage.toLowerCase() + ', hãy giữ ẩm vừa phải và theo dõi cây sau khi dùng ' + fertilizer.toLowerCase() + '.';
+  });
+
+  // Preview-only form response; comments are not persisted until the Supabase integration exists.
+  const reviewForm = document.getElementById('review-form');
+  if (reviewForm) reviewForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const nameValue = document.getElementById('review-name').value.trim() || 'Ẩn danh';
+    const ratingValue = Number(document.getElementById('review-rating').value);
+    const commentValue = document.getElementById('review-comment').value.trim();
+    if (!commentValue) return;
+    const article = document.createElement('article');
+    article.className = 'flex gap-4 py-5';
+    const avatar = document.createElement('span');
+    avatar.className = 'flex size-9 shrink-0 items-center justify-center rounded-full border border-[#c4d3c1] bg-[#f8faf5] text-[#527653]';
+    avatar.innerHTML = '<i class="ti ti-user" aria-hidden="true"></i>';
+    const body = document.createElement('div');
+    const heading = document.createElement('div');
+    heading.className = 'flex flex-wrap items-center gap-x-3 gap-y-1';
+    const name = document.createElement('h4');
+    name.className = 'text-sm font-semibold';
+    name.textContent = nameValue;
+    const stars = document.createElement('span');
+    stars.className = 'text-xs tracking-wide text-[#8c6b39]';
+    stars.setAttribute('aria-label', ratingValue + ' trên 5 sao');
+    stars.textContent = '★'.repeat(ratingValue) + '☆'.repeat(5 - ratingValue);
+    const comment = document.createElement('p');
+    comment.className = 'mt-2 text-sm leading-6 text-[#5e695f]';
+    comment.textContent = commentValue;
+    heading.append(name, stars);
+    body.append(heading, comment);
+    article.append(avatar, body);
+    document.getElementById('supabase-comments-container').prepend(article);
+    reviewForm.reset();
+  });
+
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) contactForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    document.getElementById('contact-note').classList.remove('hidden');
+    contactForm.reset();
+  });
+})();
+</script>
+</div>
+</body></html>
