@@ -1334,41 +1334,40 @@
   });
 })();
 <script>
-  // --- KẾT NỐI SUPABASE CHO PHẦN ĐÁNH GIÁ ---
-  const supabaseUrl = 'https://tignjlcudpgapbpossbt.supabase.co';
-  const supabaseKey = 'sb_publishable_sdSiXh23pPYUywgRwtu-tQ_gFdU8hIVa';
-  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+ // --- KẾT NỐI SUPABASE CHO PHẦN ĐÁNH GIÁ ---
+const supabaseUrl = 'https://tignjlcudpgapbpossbt.supabase.co';
+const supabaseKey = 'sb_publishable_sdSiXh23pPYUywgRwtu-tQ_gFdU8hIVa';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-  const submitBtn = document.getElementById('submit-review-btn');
-  if (submitBtn) {
-      submitBtn.addEventListener('click', async function (e) {
-          // Chặn hoàn toàn việc tự động tải lại trang của form
-          e.preventDefault();
+const reviewForm = document.getElementById('review-form');
+if (reviewForm) {
+    reviewForm.addEventListener('submit', async function (e) {
+        e.preventDefault(); // Chặn hành vi load lại trang mặc định của form
 
-          const reviewForm = submitBtn.closest('form');
-          
-          const nameInput = reviewForm ? reviewForm.querySelector('input[name="name"]') : null;
-          const ratingInput = reviewForm ? reviewForm.querySelector('select[name="rating"]') : null;
-          const commentInput = reviewForm ? reviewForm.querySelector('textarea[name="comment"]') : null;
+        const nameInput = document.getElementById('review-name');
+        const ratingInput = document.getElementById('review-rating');
+        const commentInput = document.getElementById('review-comment');
 
-          const name = nameInput && nameInput.value.trim() !== '' ? nameInput.value : 'Ẩn danh';
-          const rating = ratingInput ? parseInt(ratingInput.value) : 5;
-          const comment = commentInput ? commentInput.value : '';
+        const name = nameInput && nameInput.value.trim() !== '' ? nameInput.value : 'Ẩn danh';
+        const rating = ratingInput ? parseInt(ratingInput.value) : 5;
+        const comment = commentInput ? commentInput.value : '';
 
-          const { error } = await supabase
-              .from('reviews')
-              .insert([{ name, rating, comment }]);
+        console.log("Đang gửi đánh giá:", { name, rating, comment });
 
-          if (error) {
-              console.error('Lỗi lưu Supabase:', error);
-              alert('Gửi đánh giá thất bại! ❌');
-          } else {
-              alert('Gửi đánh giá thành công! 🎉');
-              if (reviewForm) reviewForm.reset();
-              location.reload(); // Tải lại để hiển thị đánh giá mới sau khi đã lưu xong
-          }
-      });
-  }
+        const { error } = await supabase
+            .from('reviews')
+            .insert([{ name, rating, comment }]);
+
+        if (error) {
+            console.error('Lỗi lưu Supabase:', error);
+            alert('Gửi đánh giá thất bại! ❌ ' + error.message);
+        } else {
+            alert('Gửi đánh giá thành công! 🎉');
+            reviewForm.reset();
+            location.reload(); // Tải lại để hiện đánh giá mới
+        }
+    });
+}
 </script>
 </div>
 </body></html>
