@@ -4,7 +4,7 @@
   <meta name="kombai-design-canvas" content="true">
   
   
-  
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://unpkg.com/@tailwindcss/browser@4.3.3/dist/index.global.js" integrity="sha384-2ql948lIdLcGEE0/qxNiudyTjgauA3RDJERu5xW75kFCvSl5a9odyQYCb6tEjnmB" crossorigin="anonymous"></script>
   
   <style>html, body { margin: 0; padding: 0; } #root { display: contents; }</style>
@@ -1333,6 +1333,39 @@
     contactForm.reset();
   });
 })();
+
+// --- KẾT NỐI SUPABASE CHO PHẦN ĐÁNH GIÁ ---
+  const supabaseUrl = 'tigjnlcudpgapbpossbt';
+  const supabaseKey = 'sb_publishable_sdSiXh23pYpUYwgrWtu-tQ_gfu8hIVa';
+  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+  const reviewForm = document.querySelector('form');
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      
+      const nameInput = reviewForm.querySelector('input[name="name"]');
+      const ratingInput = reviewForm.querySelector('select[name="rating"]');
+      const commentInput = reviewForm.querySelector('textarea[name="comment"]');
+
+      const name = nameInput ? nameInput.value : 'Ẩn danh';
+      const rating = ratingInput ? parseInt(ratingInput.value) : 5;
+      const comment = commentInput ? commentInput.value : '';
+
+      const { error } = await supabase
+        .from('reviews')
+        .insert([{ name, rating, comment }]);
+
+      if (error) {
+        console.error('Lỗi lưu Supabase:', error);
+        alert('Gửi đánh giá thất bại! ❌');
+      } else {
+        alert('Gửi đánh giá thành công! 🎉');
+        reviewForm.reset();
+        location.reload();
+      }
+    });
+  }
 </script>
 </div>
 </body></html>
