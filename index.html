@@ -1339,7 +1339,7 @@
   const supabaseKey = 'sb_publishable_sdSiXh23pYpUYwgrWtu-tQ_gfu8hIVa';
   const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-  const reviewForm = document.querySelector('form');
+  const reviewForm = document.querySelectorAll('form')[1];
   if (reviewForm) {
     reviewForm.addEventListener('submit', async function (event) {
       event.preventDefault();
