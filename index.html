@@ -1011,7 +1011,9 @@
                                 </p>
                                 <button class="rounded-md bg-[#2f6f4e] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1f4d3a]" data-kid="1-3-7-1-1-2-1-2-2" data-name="submit button" type="submit">
                                     Gửi nhận xét
-                                </button>
+                                <button id="submit-review-btn" class="rounded-md bg-[#2f6f4e] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1f4d3a]" data-kid="1-3-7-1-1-2-2-1" data-name="submit button" type="submit">
+    Gửi nhận xét
+</button>
                             </div>
                         </form>
                         <div class="mt-8" data-kid="1-3-7-1-1-2-2" data-name="comments list container">
@@ -1335,37 +1337,40 @@
 })();
 
 // --- KẾT NỐI SUPABASE CHO PHẦN ĐÁNH GIÁ ---
-  const supabaseUrl = 'tigjnlcudpgapbpossbt';
-  const supabaseKey = 'sb_publishable_sdSiXh23pYpUYwgrWtu-tQ_gfu8hIVa';
-  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseUrl = 'tignJlcudpgapbpossbt';
+const supabaseKey = 'sb_publishable_sdSiXh23pPYUywgRwtu-tQ_gFdU8hIVa'; // Key của bạn
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-  const reviewForm = document.querySelectorAll('form')[1];
-  if (reviewForm) {
-    reviewForm.addEventListener('submit', async function (event) {
-      event.preventDefault();
-      
-      const nameInput = reviewForm.querySelector('input[name="name"]');
-      const ratingInput = reviewForm.querySelector('select[name="rating"]');
-      const commentInput = reviewForm.querySelector('textarea[name="comment"]');
+const submitBtn = document.getElementById('submit-review-btn');
+if (submitBtn) {
+    submitBtn.addEventListener('click', async function (event) {
+        event.preventDefault(); // Chặn đứng việc reload trang
 
-      const name = nameInput ? nameInput.value : 'Ẩn danh';
-      const rating = ratingInput ? parseInt(ratingInput.value) : 5;
-      const comment = commentInput ? commentInput.value : '';
+        // Tìm form chứa nút này
+        const reviewForm = submitBtn.closest('form');
+        
+        const nameInput = reviewForm ? reviewForm.querySelector('input[name="name"]') : null;
+        const ratingInput = reviewForm ? reviewForm.querySelector('select[name="rating"]') : null;
+        const commentInput = reviewForm ? reviewForm.querySelector('textarea[name="comment"]') : null;
 
-      const { error } = await supabase
-        .from('reviews')
-        .insert([{ name, rating, comment }]);
+        const name = nameInput && nameInput.value.trim() !== '' ? nameInput.value : 'Ẩn danh';
+        const rating = ratingInput ? parseInt(ratingInput.value) : 5;
+        const comment = commentInput ? commentInput.value : '';
 
-      if (error) {
-        console.error('Lỗi lưu Supabase:', error);
-        alert('Gửi đánh giá thất bại! ❌');
-      } else {
-        alert('Gửi đánh giá thành công! 🎉');
-        reviewForm.reset();
-        location.reload();
-      }
+        const { error } = await supabase
+            .from('reviews')
+            .insert([{ name, rating, comment }]);
+
+        if (error) {
+            console.error('Lỗi lưu Supabase:', error);
+            alert('Gửi đánh giá thất bại! ❌');
+        } else {
+            alert('Gửi đánh giá thành công! 🎉');
+            if (reviewForm) reviewForm.reset();
+            location.reload(); // Load lại để hiển thị đánh giá mới
+        }
     });
-  }
+}
 </script>
 </div>
 </body></html>
